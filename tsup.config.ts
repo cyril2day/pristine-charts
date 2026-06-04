@@ -45,6 +45,7 @@ export default defineConfig({
     'line-chart/index': 'src/line-chart/index.ts',
     'pie-donut-chart/index': 'src/pie-donut-chart/index.ts',
     'progress-bar/index': 'src/progress-bar/index.ts',
+    'ranked-list/index': 'src/ranked-list/index.ts',
     'scatter-plot/index': 'src/scatter-plot/index.ts',
     'sparkline/index': 'src/sparkline/index.ts',
   },

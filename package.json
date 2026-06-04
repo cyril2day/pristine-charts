@@ -45,6 +45,10 @@
       "import": "./dist/progress-bar/index.js",
       "require": "./dist/progress-bar/index.cjs"
     },
+    "./ranked-list": {
+      "import": "./dist/ranked-list/index.js",
+      "require": "./dist/ranked-list/index.cjs"
+    },
     "./scatter-plot": {
       "import": "./dist/scatter-plot/index.js",
       "require": "./dist/scatter-plot/index.cjs"

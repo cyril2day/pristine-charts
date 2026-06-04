@@ -190,6 +190,31 @@ export type {
   Total,
   ValidatedProgressBarInput,
 } from './progress-bar'
+export { RankedList } from './ranked-list'
+export {
+  DEFAULT_RANKED_LIST_VIEW_PROPS,
+  computeRankedList,
+  formatRankedListNumber,
+  formatRankedListRank,
+  formatRankedListRankChange,
+  validateRankedListInput,
+} from './ranked-list'
+export type {
+  PriorRank,
+  Rank,
+  RankChange,
+  RankedEntry,
+  RankedItem,
+  RankedListError,
+  RankedListErrorType,
+  RankedListInput,
+  RankedListLabel,
+  RankedListProps,
+  RankedListResult,
+  RankedListValue,
+  ValidatedDataset as ValidatedRankedListDataset,
+  ValidatedRankedItem,
+} from './ranked-list'
 export { ScatterPlot } from './scatter-plot'
 export {
   DEFAULT_SCATTER_PLOT_VIEW_PROPS,
