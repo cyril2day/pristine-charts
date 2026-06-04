@@ -5,6 +5,7 @@ export default defineConfig({
     index: 'src/index.ts',
     'area-chart/index': 'src/area-chart/index.ts',
     'bar-chart/index': 'src/bar-chart/index.ts',
+    'box-plot/index': 'src/box-plot/index.ts',
     'histogram-chart/index': 'src/histogram-chart/index.ts',
     'line-chart/index': 'src/line-chart/index.ts',
     'pie-donut-chart/index': 'src/pie-donut-chart/index.ts',
