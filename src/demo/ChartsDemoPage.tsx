@@ -7,6 +7,10 @@ import {
   DEFAULT_BAR_CHART_VIEW_PROPS,
 } from '@/bar-chart'
 import {
+  BoxPlot,
+  DEFAULT_BOX_PLOT_VIEW_PROPS,
+} from '@/box-plot'
+import {
   DEFAULT_HISTOGRAM_CHART_VIEW_PROPS,
   HistogramChart,
 } from '@/histogram-chart'
@@ -34,6 +38,10 @@ const revenueDeltaData = [
 
 const histogramData = [
   45, 52, 61, 61, 63, 67, 70, 71, 72, 74, 75, 76, 78, 80, 82, 85, 88, 91, 94, 99,
+]
+
+const boxPlotData = [
+  12, 45, 52, 55, 61, 63, 67, 70, 71, 72, 74, 75, 76, 78, 80, 82, 85, 88, 91, 99,
 ]
 
 const weeklyTemperatureData = [
@@ -92,6 +100,13 @@ const histogramChartProps = {
   binStrategy: { kind: 'manual', thresholds: [40, 50, 60, 70, 80, 90, 100] },
 } satisfies Parameters<typeof HistogramChart>[0]
 
+const boxPlotProps = {
+  ...DEFAULT_BOX_PLOT_VIEW_PROPS,
+  data: boxPlotData,
+  ariaLabel: 'Exam score box plot',
+  caption: some('Exam score distribution with one low outlier.'),
+} satisfies Parameters<typeof BoxPlot>[0]
+
 const lineChartProps = {
   ...DEFAULT_LINE_CHART_VIEW_PROPS,
   data: weeklyTemperatureData,
@@ -142,6 +157,11 @@ export function ChartsDemoPage() {
         <section className="app-shell__panel">
           <h2>Histogram</h2>
           <HistogramChart {...histogramChartProps} />
+        </section>
+
+        <section className="app-shell__panel">
+          <h2>Box Plot</h2>
+          <BoxPlot {...boxPlotProps} />
         </section>
 
         <section className="app-shell__panel">
