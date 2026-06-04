@@ -21,6 +21,10 @@
       "import": "./dist/bar-chart/index.js",
       "require": "./dist/bar-chart/index.cjs"
     },
+    "./box-plot": {
+      "import": "./dist/box-plot/index.js",
+      "require": "./dist/box-plot/index.cjs"
+    },
     "./histogram-chart": {
       "import": "./dist/histogram-chart/index.js",
       "require": "./dist/histogram-chart/index.cjs"

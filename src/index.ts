@@ -48,6 +48,26 @@ export type {
   SortDirection,
   ValidatedBarChartDatum,
 } from './bar-chart'
+export { BoxPlot } from './box-plot'
+export {
+  DEFAULT_BOX_PLOT_VIEW_PROPS,
+  computeBoxPlot,
+  formatBoxPlotNumber,
+  validateBoxPlotInput,
+} from './box-plot'
+export type {
+  BoxPlotError,
+  BoxPlotErrorType,
+  BoxPlotInput,
+  BoxPlotProps,
+  BoxPlotResult,
+  FiveNumberSummary,
+  NumericValue as BoxPlotNumericValue,
+  Outlier,
+  SortedDataset as SortedBoxPlotDataset,
+  ValidatedBoxPlotInput,
+  ValidatedDataset as ValidatedBoxPlotDataset,
+} from './box-plot'
 export { HistogramChart } from './histogram-chart'
 export {
   DEFAULT_HISTOGRAM_CHART_VIEW_PROPS,
