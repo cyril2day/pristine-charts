@@ -1,0 +1,79 @@
+@use 'pristine-styles/scss' as *;
+
+:root {
+  color-scheme: light;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-family-sans);
+  background:
+    radial-gradient(circle at top, rgba(32, 114, 255, 0.08), transparent 30%),
+    var(--color-background);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.app-shell__hero {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.app-shell__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: var(--text-xs);
+  color: var(--color-link);
+}
+
+.app-shell__title {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.04;
+}
+
+.app-shell__lead {
+  margin: 0;
+  max-width: 44rem;
+  color: var(--text-secondary);
+}
+
+.app-shell__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.app-shell__panel {
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-sm);
+}
+
+.app-shell__panel h2 {
+  margin-top: 0;
+  font-size: var(--text-xl);
+}
+
+.app-shell__panel p {
+  color: var(--text-secondary);
+}
