@@ -1,0 +1,137 @@
+.pristine-box-plot {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-0);
+}
+
+.pristine-box-plot__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  border: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.pristine-box-plot__plot {
+  fill: var(--color-surface);
+}
+
+.pristine-box-plot__axis {
+  stroke: var(--color-border-strong);
+  stroke-width: var(--border-width-1);
+  shape-rendering: crispEdges;
+}
+
+.pristine-box-plot__grid-line line {
+  stroke: var(--color-border);
+  stroke-width: var(--border-width-1);
+  shape-rendering: crispEdges;
+}
+
+.pristine-box-plot__tick text {
+  dominant-baseline: middle;
+  font-family: var(--font-family-sans);
+  font-size: var(--text-xs);
+  fill: var(--color-text-muted);
+}
+
+.pristine-box-plot__tick line {
+  stroke: var(--color-border-strong);
+  stroke-width: var(--border-width-1);
+  shape-rendering: crispEdges;
+}
+
+.pristine-box-plot__part,
+.pristine-box-plot__outlier {
+  cursor: pointer;
+}
+
+.pristine-box-plot__part:focus,
+.pristine-box-plot__outlier:focus {
+  outline: none;
+}
+
+.pristine-box-plot__box {
+  fill: color-mix(in srgb, var(--color-blue) 18%, var(--color-surface));
+  stroke: var(--color-blue);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.pristine-box-plot__whisker,
+.pristine-box-plot__whisker-cap,
+.pristine-box-plot__median {
+  stroke: var(--color-text);
+  stroke-linecap: square;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.pristine-box-plot__median {
+  stroke-width: 3;
+}
+
+.pristine-box-plot__hit-area,
+.pristine-box-plot__outlier-hit-area {
+  fill: transparent;
+  pointer-events: all;
+}
+
+.pristine-box-plot__outlier-mark {
+  fill: var(--color-surface);
+  stroke: var(--color-blue);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.pristine-box-plot__part:hover .pristine-box-plot__box,
+.pristine-box-plot__part:focus-visible .pristine-box-plot__box,
+.pristine-box-plot__part--active .pristine-box-plot__box {
+  fill: color-mix(in srgb, var(--color-blue) 28%, var(--color-surface));
+  stroke: var(--color-text);
+}
+
+.pristine-box-plot__part:hover .pristine-box-plot__whisker,
+.pristine-box-plot__part:hover .pristine-box-plot__whisker-cap,
+.pristine-box-plot__part:hover .pristine-box-plot__median,
+.pristine-box-plot__part:focus-visible .pristine-box-plot__whisker,
+.pristine-box-plot__part:focus-visible .pristine-box-plot__whisker-cap,
+.pristine-box-plot__part:focus-visible .pristine-box-plot__median,
+.pristine-box-plot__part--active .pristine-box-plot__whisker,
+.pristine-box-plot__part--active .pristine-box-plot__whisker-cap,
+.pristine-box-plot__part--active .pristine-box-plot__median {
+  stroke: var(--color-blue);
+}
+
+.pristine-box-plot__outlier:hover .pristine-box-plot__outlier-mark,
+.pristine-box-plot__outlier:focus-visible .pristine-box-plot__outlier-mark,
+.pristine-box-plot__outlier.pristine-box-plot__part--active .pristine-box-plot__outlier-mark {
+  fill: var(--color-blue);
+  stroke: var(--color-text);
+}
+
+.pristine-box-plot__caption {
+  margin: var(--space-0);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.pristine-box-plot__tooltip {
+  pointer-events: none;
+}
+
+.pristine-box-plot__tooltip-background {
+  fill: var(--color-text);
+  stroke: var(--color-surface);
+  stroke-width: var(--border-width-1);
+}
+
+.pristine-box-plot__tooltip-text {
+  dominant-baseline: middle;
+  font-family: var(--font-family-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-surface);
+}
