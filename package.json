@@ -29,6 +29,10 @@
       "import": "./dist/histogram-chart/index.js",
       "require": "./dist/histogram-chart/index.cjs"
     },
+    "./kpi-card": {
+      "import": "./dist/kpi-card/index.js",
+      "require": "./dist/kpi-card/index.cjs"
+    },
     "./line-chart": {
       "import": "./dist/line-chart/index.js",
       "require": "./dist/line-chart/index.cjs"
@@ -44,6 +48,10 @@
     "./scatter-plot": {
       "import": "./dist/scatter-plot/index.js",
       "require": "./dist/scatter-plot/index.cjs"
+    },
+    "./sparkline": {
+      "import": "./dist/sparkline/index.js",
+      "require": "./dist/sparkline/index.cjs"
     },
     "./styles.css": "./dist/styles.css"
   },
