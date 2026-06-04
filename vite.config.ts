@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => {
   const isPagesBuild = mode === 'pages'
 
   return {
-    base: isPagesBuild ? '/pristine-charts/' : '/',
+    base: isPagesBuild ? './' : '/',
     plugins: [react()],
     build: isPagesBuild
       ? {
