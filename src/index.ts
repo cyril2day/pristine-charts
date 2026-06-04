@@ -68,6 +68,26 @@ export type {
   ValidatedLineChartInput,
   ValidatedLineChartPoint,
 } from './line-chart'
+export { ScatterPlot } from './scatter-plot'
+export {
+  DEFAULT_SCATTER_PLOT_VIEW_PROPS,
+  computeScatterPlot,
+  formatScatterPlotNumber,
+  validateScatterPlotInput,
+} from './scatter-plot'
+export type {
+  ScatterCoordinateValue,
+  ScatterPlotDot,
+  ScatterPlotError,
+  ScatterPlotErrorType,
+  ScatterPlotInput,
+  ScatterPlotPoint,
+  ScatterPlotProps,
+  ScatterPlotResult,
+  ValidatedDataset as ValidatedScatterPlotDataset,
+  ValidatedScatterPlotInput,
+  ValidatedScatterPlotPoint,
+} from './scatter-plot'
 export {
   andThenResult,
   classNames,

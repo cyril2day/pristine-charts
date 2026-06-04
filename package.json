@@ -25,6 +25,10 @@
       "import": "./dist/line-chart/index.js",
       "require": "./dist/line-chart/index.cjs"
     },
+    "./scatter-plot": {
+      "import": "./dist/scatter-plot/index.js",
+      "require": "./dist/scatter-plot/index.cjs"
+    },
     "./styles.css": "./dist/styles.css"
   },
   "files": [
