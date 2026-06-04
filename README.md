@@ -64,6 +64,7 @@ Deep export:
 import { BarChart } from 'pristine-charts/bar-chart'
 import { HistogramChart } from 'pristine-charts/histogram-chart'
 import { LineChart } from 'pristine-charts/line-chart'
+import { AreaChart } from 'pristine-charts/area-chart'
 import { ScatterPlot } from 'pristine-charts/scatter-plot'
 ```
 
@@ -71,6 +72,7 @@ import { ScatterPlot } from 'pristine-charts/scatter-plot'
 
 ```txt
 src/
+  area-chart/     # area chart component, domain, and types
   bar-chart/      # bar chart component, domain, and types
   chart-error/    # reusable chart error component
   histogram-chart/ # histogram component, domain, and types
