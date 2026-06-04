@@ -21,6 +21,10 @@
       "import": "./dist/histogram-chart/index.js",
       "require": "./dist/histogram-chart/index.cjs"
     },
+    "./line-chart": {
+      "import": "./dist/line-chart/index.js",
+      "require": "./dist/line-chart/index.cjs"
+    },
     "./styles.css": "./dist/styles.css"
   },
   "files": [

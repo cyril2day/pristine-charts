@@ -5,6 +5,7 @@ export default defineConfig({
     index: 'src/index.ts',
     'bar-chart/index': 'src/bar-chart/index.ts',
     'histogram-chart/index': 'src/histogram-chart/index.ts',
+    'line-chart/index': 'src/line-chart/index.ts',
   },
   format: ['esm', 'cjs'],
   dts: false,
