@@ -1,0 +1,80 @@
+.pristine-kpi-card {
+  display: grid;
+  gap: var(--space-3);
+  align-content: space-between;
+  width: min(100%, var(--pristine-kpi-card-width));
+  min-height: var(--pristine-kpi-card-min-height);
+  margin: var(--space-0);
+  padding: var(--space-4);
+  border: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.pristine-kpi-card__body {
+  display: grid;
+  gap: var(--space-2);
+  align-content: center;
+}
+
+.pristine-kpi-card__metric,
+.pristine-kpi-card__value,
+.pristine-kpi-card__change,
+.pristine-kpi-card__caption {
+  margin: var(--space-0);
+}
+
+.pristine-kpi-card__metric {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+}
+
+.pristine-kpi-card__value {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.1;
+  color: var(--color-text);
+}
+
+.pristine-kpi-card__change {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-2);
+  align-items: center;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+}
+
+.pristine-kpi-card__change::before {
+  content: '';
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background: currentColor;
+}
+
+.pristine-kpi-card__change--improved {
+  color: var(--color-green);
+}
+
+.pristine-kpi-card__change--declined {
+  color: var(--color-red);
+}
+
+.pristine-kpi-card__change--unchanged {
+  color: var(--color-text-muted);
+}
+
+.pristine-kpi-card__amount,
+.pristine-kpi-card__comparison {
+  color: var(--color-text-muted);
+}
+
+.pristine-kpi-card__caption {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
