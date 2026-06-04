@@ -10,6 +10,10 @@ import {
   DEFAULT_LINE_CHART_VIEW_PROPS,
   LineChart,
 } from '@/line-chart'
+import {
+  DEFAULT_SCATTER_PLOT_VIEW_PROPS,
+  ScatterPlot,
+} from '@/scatter-plot'
 import { some } from '@/shared'
 
 const revenueDeltaData = [
@@ -34,6 +38,18 @@ const weeklyTemperatureData = [
   { x: 7, y: 26 },
 ]
 
+const studyScoreData = [
+  { x: 2, y: 55 },
+  { x: 3, y: 60 },
+  { x: 5, y: 72 },
+  { x: 5, y: 68 },
+  { x: 8, y: 85 },
+  { x: 8, y: 91 },
+  { x: 10, y: 88 },
+  { x: 1, y: 40 },
+  { x: 6, y: 75 },
+]
+
 const barChartProps = {
   ...DEFAULT_BAR_CHART_VIEW_PROPS,
   data: revenueDeltaData,
@@ -56,6 +72,13 @@ const lineChartProps = {
   ariaLabel: 'Weekly temperature line chart',
   caption: some('Daily temperature readings ordered by numeric weekday.'),
 } satisfies Parameters<typeof LineChart>[0]
+
+const scatterPlotProps = {
+  ...DEFAULT_SCATTER_PLOT_VIEW_PROPS,
+  data: studyScoreData,
+  ariaLabel: 'Study hours and exam score scatter plot',
+  caption: some('Student study hours plotted against exam score.'),
+} satisfies Parameters<typeof ScatterPlot>[0]
 
 export function ChartsDemoPage() {
   return (
@@ -82,6 +105,11 @@ export function ChartsDemoPage() {
         <section className="app-shell__panel">
           <h2>Line Chart</h2>
           <LineChart {...lineChartProps} />
+        </section>
+
+        <section className="app-shell__panel">
+          <h2>Scatter Plot</h2>
+          <ScatterPlot {...scatterPlotProps} />
         </section>
       </section>
     </main>

@@ -3,6 +3,7 @@
 @use '../chart-error/ChartError';
 @use '../histogram-chart/HistogramChart';
 @use '../line-chart/LineChart';
+@use '../scatter-plot/ScatterPlot';
 
 :root {
   color-scheme: light;
