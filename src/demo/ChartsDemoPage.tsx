@@ -15,6 +15,10 @@ import {
   HistogramChart,
 } from '@/histogram-chart'
 import {
+  DEFAULT_KPI_CARD_VIEW_PROPS,
+  KPICard,
+} from '@/kpi-card'
+import {
   DEFAULT_LINE_CHART_VIEW_PROPS,
   LineChart,
 } from '@/line-chart'
@@ -30,7 +34,12 @@ import {
   DEFAULT_SCATTER_PLOT_VIEW_PROPS,
   ScatterPlot,
 } from '@/scatter-plot'
+import {
+  DEFAULT_SPARKLINE_VIEW_PROPS,
+  Sparkline,
+} from '@/sparkline'
 import { some } from '@/shared'
+import { cond } from '@/shared/fp'
 
 const revenueDeltaData = [
   { category: 'North', value: 32 },
@@ -66,6 +75,17 @@ const weeklyActiveUsersData = [
   { x: 5, y: 2100 },
   { x: 6, y: 1950 },
   { x: 7, y: 1600 },
+]
+
+const monthlyRevenueTrendData = [
+  { x: 1, y: 92_000 },
+  { x: 2, y: 95_500 },
+  { x: 3, y: 91_200 },
+  { x: 4, y: 104_800 },
+  { x: 5, y: 110_100 },
+  { x: 6, y: 108_700 },
+  { x: 7, y: 116_400 },
+  { x: 8, y: 121_300 },
 ]
 
 const budgetBreakdownData = [
@@ -125,6 +145,13 @@ const areaChartProps = {
   caption: some('Daily active users with the filled region anchored to zero.'),
 } satisfies Parameters<typeof AreaChart>[0]
 
+const sparklineProps = {
+  ...DEFAULT_SPARKLINE_VIEW_PROPS,
+  data: monthlyRevenueTrendData,
+  ariaLabel: 'Monthly revenue trend sparkline',
+  caption: some('Eight-month revenue trend shown as a compact inline chart.'),
+} satisfies Parameters<typeof Sparkline>[0]
+
 const pieDonutChartProps = {
   ...DEFAULT_PIE_DONUT_CHART_VIEW_PROPS,
   data: budgetBreakdownData,
@@ -149,6 +176,28 @@ const progressBarProps = {
   caption: some('Quarterly sales target completion.'),
   formatValue: (value: number) => `$${value.toLocaleString()}`,
 } satisfies Parameters<typeof ProgressBar>[0]
+
+const formatSignedCurrency = (value: number) => {
+  const sign = cond([
+    [(candidate: number) => candidate > 0, () => '+'],
+    [(candidate: number) => candidate < 0, () => '-'],
+    [() => true, () => ''],
+  ])(value)
+
+  return `${sign}$${Math.abs(value).toLocaleString()}`
+}
+
+const kpiCardProps = {
+  ...DEFAULT_KPI_CARD_VIEW_PROPS,
+  metricName: 'Monthly Revenue',
+  currentValue: 124_500,
+  referenceValue: 110_800,
+  ariaLabel: 'Monthly revenue KPI card',
+  caption: some('Current month revenue compared with last month.'),
+  comparisonLabel: 'vs last month',
+  formatValue: (value: number) => `$${value.toLocaleString()}`,
+  formatChangeAmount: formatSignedCurrency,
+} satisfies Parameters<typeof KPICard>[0]
 
 export function ChartsDemoPage() {
   return (
@@ -188,6 +237,11 @@ export function ChartsDemoPage() {
         </section>
 
         <section className="app-shell__panel">
+          <h2>Sparkline</h2>
+          <Sparkline {...sparklineProps} />
+        </section>
+
+        <section className="app-shell__panel">
           <h2>Pie / Donut Chart</h2>
           <PieDonutChart {...pieDonutChartProps} />
         </section>
@@ -200,6 +254,11 @@ export function ChartsDemoPage() {
         <section className="app-shell__panel">
           <h2>Progress Bar</h2>
           <ProgressBar {...progressBarProps} />
+        </section>
+
+        <section className="app-shell__panel">
+          <h2>KPI Card</h2>
+          <KPICard {...kpiCardProps} />
         </section>
       </section>
     </main>

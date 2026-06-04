@@ -4,10 +4,12 @@
 @use '../box-plot/BoxPlot';
 @use '../chart-error/ChartError';
 @use '../histogram-chart/HistogramChart';
+@use '../kpi-card/KPICard';
 @use '../line-chart/LineChart';
 @use '../pie-donut-chart/PieDonutChart';
 @use '../progress-bar/ProgressBar';
 @use '../scatter-plot/ScatterPlot';
+@use '../sparkline/Sparkline';
 
 :root {
   color-scheme: light;
