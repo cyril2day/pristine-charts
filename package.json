@@ -29,6 +29,10 @@
       "import": "./dist/line-chart/index.js",
       "require": "./dist/line-chart/index.cjs"
     },
+    "./pie-donut-chart": {
+      "import": "./dist/pie-donut-chart/index.js",
+      "require": "./dist/pie-donut-chart/index.cjs"
+    },
     "./scatter-plot": {
       "import": "./dist/scatter-plot/index.js",
       "require": "./dist/scatter-plot/index.cjs"

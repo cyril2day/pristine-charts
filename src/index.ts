@@ -93,6 +93,36 @@ export type {
   ValidatedLineChartInput,
   ValidatedLineChartPoint,
 } from './line-chart'
+export { PieDonutChart } from './pie-donut-chart'
+export {
+  DEFAULT_PIE_DONUT_CHART_VARIANT,
+  DEFAULT_PIE_DONUT_CHART_VIEW_PROPS,
+  computePieDonutChart,
+  formatPieDonutChartNumber,
+  formatPieDonutChartPercentage,
+  validatePieDonutChartInput,
+} from './pie-donut-chart'
+export type {
+  Arc,
+  ChartVariant,
+  DonutChartVariant,
+  InnerRadius,
+  PieChartVariant,
+  PieDonutChartError,
+  PieDonutChartErrorType,
+  PieDonutChartInput,
+  PieDonutChartProps,
+  PieDonutChartResult,
+  Proportion,
+  Radian,
+  SegmentedWhole,
+  Slice,
+  ValidatedChartVariant,
+  ValidatedDataset as ValidatedPieDonutChartDataset,
+  ValidatedPieDonutChartInput,
+  ValidatedSlice,
+  Value,
+} from './pie-donut-chart'
 export { ScatterPlot } from './scatter-plot'
 export {
   DEFAULT_SCATTER_PLOT_VIEW_PROPS,
