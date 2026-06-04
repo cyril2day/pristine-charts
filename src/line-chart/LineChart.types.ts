@@ -1,22 +1,24 @@
 import type { Option, Result } from '../shared'
+import type {
+  LinearSeriesCoordinateValue,
+  LinearSeriesPoint,
+  LinearSeriesSegment,
+  SortedLinearSeriesDataset,
+  ValidatedLinearSeriesDataset,
+  ValidatedLinearSeriesPoint,
+} from '../shared/linearSeries'
 
-export type CoordinateValue = number
+export type CoordinateValue = LinearSeriesCoordinateValue
 
-export type LineChartPoint = {
-  readonly x: CoordinateValue
-  readonly y: CoordinateValue
-}
+export type LineChartPoint = LinearSeriesPoint
 
-export type ValidatedLineChartPoint = LineChartPoint
+export type ValidatedLineChartPoint = ValidatedLinearSeriesPoint
 
-export type ValidatedDataset = readonly ValidatedLineChartPoint[]
+export type ValidatedDataset = ValidatedLinearSeriesDataset
 
-export type SortedDataset = readonly ValidatedLineChartPoint[]
+export type SortedDataset = SortedLinearSeriesDataset
 
-export type LineSegment = {
-  readonly start: ValidatedLineChartPoint
-  readonly end: ValidatedLineChartPoint
-}
+export type LineSegment = LinearSeriesSegment
 
 export type LineChartInput = {
   readonly data: readonly LineChartPoint[]
