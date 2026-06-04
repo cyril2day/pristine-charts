@@ -1,0 +1,28 @@
+.pristine-bar-chart {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.pristine-bar-chart__caption {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.pristine-bar-chart__svg {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: linear-gradient(180deg, var(--color-surface-raised), var(--color-surface));
+}
+
+.pristine-bar-chart__label {
+  font-size: var(--text-xs);
+  fill: var(--text-secondary);
+}
+
+.pristine-bar-chart__value {
+  font-size: var(--text-xs);
+  fill: var(--text-primary);
+}
