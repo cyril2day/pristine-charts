@@ -13,6 +13,10 @@ import {
   DEFAULT_BOX_PLOT_VIEW_PROPS,
 } from '@/box-plot'
 import {
+  BulletChart,
+  DEFAULT_BULLET_CHART_VIEW_PROPS,
+} from '@/bullet-chart'
+import {
   DEFAULT_HISTOGRAM_CHART_VIEW_PROPS,
   HistogramChart,
 } from '@/histogram-chart'
@@ -227,6 +231,20 @@ const progressBarProps = {
   formatValue: (value: number) => `$${value.toLocaleString()}`,
 } satisfies Parameters<typeof ProgressBar>[0]
 
+const bulletChartProps = {
+  ...DEFAULT_BULLET_CHART_VIEW_PROPS,
+  currentValue: 87_000,
+  targetValue: 100_000,
+  bands: [
+    { label: 'At risk', lowerBound: 0, upperBound: 60_000 },
+    { label: 'Watch', lowerBound: 60_000, upperBound: 80_000 },
+    { label: 'Healthy', lowerBound: 80_000, upperBound: 120_000 },
+  ],
+  ariaLabel: 'Quarterly sales bullet chart',
+  caption: some('Quarterly sales compared with target and performance bands.'),
+  formatValue: (value: number) => `$${value.toLocaleString()}`,
+} satisfies Parameters<typeof BulletChart>[0]
+
 const rankedListProps = {
   ...DEFAULT_RANKED_LIST_VIEW_PROPS,
   data: regionalSalesRankingsData,
@@ -345,6 +363,11 @@ export function ChartsDemoPage() {
         <section className="app-shell__panel">
           <h2>Progress Bar</h2>
           <ProgressBar {...progressBarProps} />
+        </section>
+
+        <section className="app-shell__panel">
+          <h2>Bullet Chart</h2>
+          <BulletChart {...bulletChartProps} />
         </section>
 
         <section className="app-shell__panel">

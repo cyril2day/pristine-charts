@@ -48,6 +48,28 @@ export type {
   SortDirection,
   ValidatedBarChartDatum,
 } from './bar-chart'
+export { BulletChart } from './bullet-chart'
+export {
+  DEFAULT_BULLET_CHART_VIEW_PROPS,
+  computeBulletChart,
+  formatBulletChartNumber,
+  validateBulletChartInput,
+} from './bullet-chart'
+export type {
+  BandLabel,
+  BulletChartError,
+  BulletChartErrorType,
+  BulletChartInput,
+  BulletChartProps,
+  BulletChartResult,
+  BulletChartSummary,
+  CurrentValue as BulletChartCurrentValue,
+  PerformanceBand,
+  ScaleRange,
+  TargetValue,
+  ValidatedBulletChartInput,
+  ValidatedPerformanceBand,
+} from './bullet-chart'
 export { BoxPlot } from './box-plot'
 export {
   DEFAULT_BOX_PLOT_VIEW_PROPS,
