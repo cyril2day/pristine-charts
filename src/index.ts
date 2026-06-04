@@ -47,6 +47,27 @@ export type {
   ValidatedDataset,
   ValidatedHistogramInput,
 } from './histogram-chart'
+export { LineChart } from './line-chart'
+export {
+  DEFAULT_LINE_CHART_VIEW_PROPS,
+  computeLineChart,
+  formatLineChartNumber,
+  validateLineChartInput,
+} from './line-chart'
+export type {
+  CoordinateValue,
+  LineChartError,
+  LineChartErrorType,
+  LineChartInput,
+  LineChartPoint,
+  LineChartProps,
+  LineChartResult,
+  LineSegment,
+  SortedDataset,
+  ValidatedDataset as ValidatedLineChartDataset,
+  ValidatedLineChartInput,
+  ValidatedLineChartPoint,
+} from './line-chart'
 export {
   andThenResult,
   classNames,

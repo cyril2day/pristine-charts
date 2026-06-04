@@ -6,6 +6,10 @@ import {
   DEFAULT_HISTOGRAM_CHART_VIEW_PROPS,
   HistogramChart,
 } from '@/histogram-chart'
+import {
+  DEFAULT_LINE_CHART_VIEW_PROPS,
+  LineChart,
+} from '@/line-chart'
 import { some } from '@/shared'
 
 const revenueDeltaData = [
@@ -18,6 +22,16 @@ const revenueDeltaData = [
 
 const histogramData = [
   45, 52, 61, 61, 63, 67, 70, 71, 72, 74, 75, 76, 78, 80, 82, 85, 88, 91, 94, 99,
+]
+
+const weeklyTemperatureData = [
+  { x: 1, y: 22 },
+  { x: 2, y: 24 },
+  { x: 3, y: 19 },
+  { x: 4, y: 21 },
+  { x: 5, y: 25 },
+  { x: 6, y: 28 },
+  { x: 7, y: 26 },
 ]
 
 const barChartProps = {
@@ -35,6 +49,13 @@ const histogramChartProps = {
   caption: some('Exam scores grouped by manual thresholds.'),
   binStrategy: { kind: 'manual', thresholds: [40, 50, 60, 70, 80, 90, 100] },
 } satisfies Parameters<typeof HistogramChart>[0]
+
+const lineChartProps = {
+  ...DEFAULT_LINE_CHART_VIEW_PROPS,
+  data: weeklyTemperatureData,
+  ariaLabel: 'Weekly temperature line chart',
+  caption: some('Daily temperature readings ordered by numeric weekday.'),
+} satisfies Parameters<typeof LineChart>[0]
 
 export function ChartsDemoPage() {
   return (
@@ -56,6 +77,11 @@ export function ChartsDemoPage() {
         <section className="app-shell__panel">
           <h2>Histogram</h2>
           <HistogramChart {...histogramChartProps} />
+        </section>
+
+        <section className="app-shell__panel">
+          <h2>Line Chart</h2>
+          <LineChart {...lineChartProps} />
         </section>
       </section>
     </main>

@@ -2,6 +2,7 @@
 @use '../bar-chart/BarChart';
 @use '../chart-error/ChartError';
 @use '../histogram-chart/HistogramChart';
+@use '../line-chart/LineChart';
 
 :root {
   color-scheme: light;
