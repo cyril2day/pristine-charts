@@ -1,1 +1,6 @@
-export { cn } from './cn'
+export { classNames } from './className'
+export { withNumberDefault } from './number'
+export { fromNullable, getOrElse, isNone, isSome, matchOption, none, some } from './option'
+export { andThenResult, bindResult, err, isOk, mapResult, matchResult, ok } from './result'
+export type { None, Option, OptionMatcher, Some } from './option'
+export type { Err, Ok, Result, ResultMatcher } from './result'
