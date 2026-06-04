@@ -37,6 +37,10 @@
       "import": "./dist/pie-donut-chart/index.js",
       "require": "./dist/pie-donut-chart/index.cjs"
     },
+    "./progress-bar": {
+      "import": "./dist/progress-bar/index.js",
+      "require": "./dist/progress-bar/index.cjs"
+    },
     "./scatter-plot": {
       "import": "./dist/scatter-plot/index.js",
       "require": "./dist/scatter-plot/index.cjs"
