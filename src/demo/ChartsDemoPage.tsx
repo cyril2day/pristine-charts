@@ -23,6 +23,10 @@ import {
   PieDonutChart,
 } from '@/pie-donut-chart'
 import {
+  DEFAULT_PROGRESS_BAR_VIEW_PROPS,
+  ProgressBar,
+} from '@/progress-bar'
+import {
   DEFAULT_SCATTER_PLOT_VIEW_PROPS,
   ScatterPlot,
 } from '@/scatter-plot'
@@ -137,6 +141,15 @@ const scatterPlotProps = {
   caption: some('Student study hours plotted against exam score.'),
 } satisfies Parameters<typeof ScatterPlot>[0]
 
+const progressBarProps = {
+  ...DEFAULT_PROGRESS_BAR_VIEW_PROPS,
+  currentValue: 73_000,
+  total: 100_000,
+  ariaLabel: 'Quarterly sales target progress',
+  caption: some('Quarterly sales target completion.'),
+  formatValue: (value: number) => `$${value.toLocaleString()}`,
+} satisfies Parameters<typeof ProgressBar>[0]
+
 export function ChartsDemoPage() {
   return (
     <main className="app-shell">
@@ -182,6 +195,11 @@ export function ChartsDemoPage() {
         <section className="app-shell__panel">
           <h2>Scatter Plot</h2>
           <ScatterPlot {...scatterPlotProps} />
+        </section>
+
+        <section className="app-shell__panel">
+          <h2>Progress Bar</h2>
+          <ProgressBar {...progressBarProps} />
         </section>
       </section>
     </main>
