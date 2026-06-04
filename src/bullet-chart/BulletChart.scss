@@ -1,0 +1,124 @@
+.pristine-bullet-chart {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-0);
+}
+
+.pristine-bullet-chart__caption {
+  margin: var(--space-0);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.pristine-bullet-chart__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  border: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-surface-raised) 46%, var(--color-surface)) 0%,
+      var(--color-surface) 54%
+    );
+}
+
+.pristine-bullet-chart__track-shell {
+  fill: var(--color-surface);
+  stroke: color-mix(in srgb, var(--color-border-strong) 52%, transparent);
+  stroke-width: var(--border-width-1);
+  filter: drop-shadow(0 1px 2px var(--shadow-color));
+}
+
+.pristine-bullet-chart__band {
+  opacity: 0.95;
+  stroke: color-mix(in srgb, var(--color-surface) 82%, transparent);
+  stroke-width: 1.5;
+}
+
+.pristine-bullet-chart__band--1 {
+  fill: color-mix(in srgb, var(--color-text) 9%, var(--color-surface));
+}
+
+.pristine-bullet-chart__band--2 {
+  fill: color-mix(in srgb, var(--color-text) 14%, var(--color-surface));
+}
+
+.pristine-bullet-chart__band--3 {
+  fill: color-mix(in srgb, var(--color-text) 20%, var(--color-surface));
+}
+
+.pristine-bullet-chart__band--4,
+.pristine-bullet-chart__band--5,
+.pristine-bullet-chart__band--6 {
+  fill: color-mix(in srgb, var(--color-text) 26%, var(--color-surface));
+}
+
+.pristine-bullet-chart__current-bar {
+  fill: var(--color-blue);
+  filter: drop-shadow(0 1px 1px var(--shadow-color-strong));
+}
+
+.pristine-bullet-chart__target-marker-halo {
+  stroke: var(--color-surface);
+  stroke-width: 7;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.pristine-bullet-chart__target-marker {
+  stroke: var(--color-text);
+  stroke-width: 3.25;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.pristine-bullet-chart__axis line {
+  stroke: color-mix(in srgb, var(--color-border-strong) 58%, transparent);
+  stroke-width: var(--border-width-1);
+  shape-rendering: crispEdges;
+}
+
+.pristine-bullet-chart__tick line {
+  stroke: color-mix(in srgb, var(--color-border-strong) 66%, transparent);
+}
+
+.pristine-bullet-chart__value-label,
+.pristine-bullet-chart__band-label,
+.pristine-bullet-chart__tick text {
+  font-family: var(--font-family-sans);
+  font-size: var(--text-xs);
+  fill: var(--color-text-muted);
+}
+
+.pristine-bullet-chart__value-label {
+  dominant-baseline: middle;
+  font-size: var(--text-sm);
+}
+
+.pristine-bullet-chart__value-label--current {
+  font-weight: var(--font-weight-semibold);
+  fill: var(--color-text);
+}
+
+.pristine-bullet-chart__value-label--target {
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-text-muted);
+}
+
+.pristine-bullet-chart__band-label {
+  dominant-baseline: middle;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.01em;
+}
+
+.pristine-bullet-chart__band-group--active .pristine-bullet-chart__band-label {
+  fill: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+}
+
+.pristine-bullet-chart__tick text {
+  dominant-baseline: middle;
+}
