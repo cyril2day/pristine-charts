@@ -1,13 +1,13 @@
 # pristine-charts
 
-`pristine-charts` is a small React chart library with tree-shakeable deep imports, a demo app, and separate build outputs for npm and GitHub Pages.
+`pristine-charts` gives you clean, minimal statistical charts with a sensible structure behind them.
 
 ## What’s in the repo
 
-- A public npm library entry for React consumers
+- A public npm package for React consumers
 - Deep import paths for each chart
-- A Vite demo app for local development and GitHub Pages
-- Vitest coverage for chart rendering and domain rules
+- A Vite demo app for local development
+- Vitest coverage for chart rendering and domain logic
 - TypeScript declarations in the published package
 
 ## Supported charts
@@ -28,9 +28,9 @@
 ## Package shape
 
 - ESM and CJS builds are published from `dist/`
-- Type declarations are published alongside the runtime bundles
+- Type declarations ship alongside the runtime bundles
 - `react` and `react-dom` are peer dependencies
-- `sideEffects: false` is set to help bundlers tree-shake unused chart entry points
+- `sideEffects: false` helps bundlers drop unused chart entry points
 - Each chart can be imported from the root package or from its own subpath
 
 ## Install
@@ -58,7 +58,7 @@ pnpm build
 
 ## Library usage
 
-Use the root export when convenience matters, or a deep import when you want the smallest possible bundle.
+Use the root export when convenience matters, or a deep import when you want the smallest bundle.
 
 ```tsx
 import { BarChart } from 'pristine-charts'
@@ -106,11 +106,11 @@ These are the primary components intended for direct use:
 
 ### Helpers and types
 
-The root package also exports chart-specific compute, validate, format, and type helpers for consumers who want to build on the domain layer instead of rendering the components directly.
+The root package also exports chart-specific compute, validate, format, and type helpers for people who want to work with the domain layer rather than the components themselves.
 
 ### Internal building blocks
 
-Folders like `chart-error`, `demo`, `icons`, `shared`, and the per-chart `components/` directories are part of the repo, but they are implementation details rather than the main public usage surface.
+Folders like `chart-error`, `demo`, `icons`, `shared`, and the per-chart `components/` directories are part of the codebase, but they are implementation details rather than the main public surface.
 
 ## Build outputs
 
@@ -120,7 +120,7 @@ Folders like `chart-error`, `demo`, `icons`, `shared`, and the per-chart `compon
 
 ## Publishing
 
-- The GitHub Actions workflow in `.github/workflows/release.yml` deploys the demo site from `main`
+- The GitHub Actions workflow in `.github/workflows/release.yml` deploys the site from `main`
 - The same workflow publishes to npm from `v*` tags
 - npm publishing expects an `NPM_TOKEN` secret in GitHub
 
@@ -150,5 +150,5 @@ src/
 
 ## Notes
 
-- The package is designed to be consumed as a library, not as a monolithic app bundle
-- The demo site uses its own static build path so it can be deployed to GitHub Pages without affecting the npm package output
+- The package is meant to be used as a library, not as a single bundled app
+- The demo site has its own build output so it can be deployed separately without touching the npm package
