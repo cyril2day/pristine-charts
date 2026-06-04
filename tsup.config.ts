@@ -3,6 +3,7 @@ import { defineConfig } from 'tsup'
 export default defineConfig({
   entry: {
     index: 'src/index.ts',
+    'area-chart/index': 'src/area-chart/index.ts',
     'bar-chart/index': 'src/bar-chart/index.ts',
     'histogram-chart/index': 'src/histogram-chart/index.ts',
     'line-chart/index': 'src/line-chart/index.ts',

@@ -1,4 +1,5 @@
 @use 'pristine-styles/scss' as *;
+@use '../area-chart/AreaChart';
 @use '../bar-chart/BarChart';
 @use '../chart-error/ChartError';
 @use '../histogram-chart/HistogramChart';

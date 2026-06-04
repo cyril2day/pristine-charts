@@ -13,6 +13,10 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
+    "./area-chart": {
+      "import": "./dist/area-chart/index.js",
+      "require": "./dist/area-chart/index.cjs"
+    },
     "./bar-chart": {
       "import": "./dist/bar-chart/index.js",
       "require": "./dist/bar-chart/index.cjs"

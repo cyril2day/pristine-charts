@@ -1,3 +1,28 @@
+export { AreaChart } from './area-chart'
+export {
+  DEFAULT_AREA_CHART_VIEW_PROPS,
+  computeAreaChart,
+  formatAreaChartNumber,
+  validateAreaChartInput,
+} from './area-chart'
+export type {
+  AreaChartError,
+  AreaChartErrorType,
+  AreaChartInput,
+  AreaChartPoint,
+  AreaChartProps,
+  AreaChartResult,
+  AreaCoordinateValue,
+  Baseline,
+  BaselinePoint,
+  ClosingEdge,
+  FilledRegion,
+  SortedDataset as SortedAreaChartDataset,
+  ValidatedAreaChartInput,
+  ValidatedAreaChartPoint,
+  ValidatedBaseline,
+  ValidatedDataset as ValidatedAreaChartDataset,
+} from './area-chart'
 export { BarChart } from './bar-chart'
 export {
   DEFAULT_BAR_CHART_VIEW_PROPS,
