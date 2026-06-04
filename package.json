@@ -17,6 +17,10 @@
       "import": "./dist/bar-chart/index.js",
       "require": "./dist/bar-chart/index.cjs"
     },
+    "./histogram-chart": {
+      "import": "./dist/histogram-chart/index.js",
+      "require": "./dist/histogram-chart/index.cjs"
+    },
     "./styles.css": "./dist/styles.css"
   },
   "files": [
