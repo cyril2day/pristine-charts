@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 dist
+site-dist
 coverage
 docs/
 dist-ssr
@@ -27,3 +28,6 @@ dist-ssr
 
 # Agent customization
 .github/
+!.github/
+!.github/workflows/
+!.github/workflows/release.yml

@@ -35,6 +35,7 @@ const sourceAliasPlugin: EsbuildPlugin = {
 }
 
 export default defineConfig({
+  tsconfig: 'tsconfig.app.json',
   entry: {
     index: 'src/index.ts',
     'area-chart/index': 'src/area-chart/index.ts',
@@ -51,7 +52,7 @@ export default defineConfig({
     'sparkline/index': 'src/sparkline/index.ts',
   },
   format: ['esm', 'cjs'],
-  dts: false,
+  dts: true,
   sourcemap: true,
   clean: true,
   esbuildPlugins: [sourceAliasPlugin],

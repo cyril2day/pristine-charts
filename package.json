@@ -2,73 +2,89 @@
   "name": "pristine-charts",
   "version": "0.1.0",
   "type": "module",
-  "sideEffects": [
-    "**/*.css",
-    "**/*.scss"
-  ],
+  "sideEffects": false,
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
     "./area-chart": {
+      "types": "./dist/area-chart/index.d.ts",
       "import": "./dist/area-chart/index.js",
       "require": "./dist/area-chart/index.cjs"
     },
     "./bar-chart": {
+      "types": "./dist/bar-chart/index.d.ts",
       "import": "./dist/bar-chart/index.js",
       "require": "./dist/bar-chart/index.cjs"
     },
     "./box-plot": {
+      "types": "./dist/box-plot/index.d.ts",
       "import": "./dist/box-plot/index.js",
       "require": "./dist/box-plot/index.cjs"
     },
     "./bullet-chart": {
+      "types": "./dist/bullet-chart/index.d.ts",
       "import": "./dist/bullet-chart/index.js",
       "require": "./dist/bullet-chart/index.cjs"
     },
     "./histogram-chart": {
+      "types": "./dist/histogram-chart/index.d.ts",
       "import": "./dist/histogram-chart/index.js",
       "require": "./dist/histogram-chart/index.cjs"
     },
     "./kpi-card": {
+      "types": "./dist/kpi-card/index.d.ts",
       "import": "./dist/kpi-card/index.js",
       "require": "./dist/kpi-card/index.cjs"
     },
     "./line-chart": {
+      "types": "./dist/line-chart/index.d.ts",
       "import": "./dist/line-chart/index.js",
       "require": "./dist/line-chart/index.cjs"
     },
     "./pie-donut-chart": {
+      "types": "./dist/pie-donut-chart/index.d.ts",
       "import": "./dist/pie-donut-chart/index.js",
       "require": "./dist/pie-donut-chart/index.cjs"
     },
     "./progress-bar": {
+      "types": "./dist/progress-bar/index.d.ts",
       "import": "./dist/progress-bar/index.js",
       "require": "./dist/progress-bar/index.cjs"
     },
     "./ranked-list": {
+      "types": "./dist/ranked-list/index.d.ts",
       "import": "./dist/ranked-list/index.js",
       "require": "./dist/ranked-list/index.cjs"
     },
     "./scatter-plot": {
+      "types": "./dist/scatter-plot/index.d.ts",
       "import": "./dist/scatter-plot/index.js",
       "require": "./dist/scatter-plot/index.cjs"
     },
     "./sparkline": {
+      "types": "./dist/sparkline/index.d.ts",
       "import": "./dist/sparkline/index.js",
       "require": "./dist/sparkline/index.cjs"
-    },
-    "./styles.css": "./dist/styles.css"
+    }
   },
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsup && sass --load-path=node_modules src/styles/demo.scss dist/styles.css",
+    "build:lib": "tsup",
+    "build:site": "vite build --mode pages",
+    "build": "pnpm build:lib && pnpm build:site",
+    "prepublishOnly": "pnpm build:lib",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
     "test": "vitest run",
@@ -76,10 +92,7 @@
   },
   "dependencies": {
     "d3": "^7.9.0",
-    "pristine-styles": "^0.1.1",
-    "ramda": "^0.30.1",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "ramda": "^0.30.1"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -105,6 +118,9 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.8",
+    "pristine-styles": "^0.1.1",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
   }
 }
