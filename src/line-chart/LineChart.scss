@@ -1,0 +1,106 @@
+.pristine-line-chart {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-0);
+}
+
+.pristine-line-chart__caption {
+  margin: var(--space-0);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.pristine-line-chart__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  border: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.pristine-line-chart__plot {
+  fill: var(--color-surface);
+}
+
+.pristine-line-chart__axis {
+  stroke: var(--color-border-strong);
+  stroke-width: var(--border-width-1);
+  shape-rendering: crispEdges;
+}
+
+.pristine-line-chart__grid-line line {
+  stroke: var(--color-border);
+  stroke-width: var(--border-width-1);
+  shape-rendering: crispEdges;
+}
+
+.pristine-line-chart__grid-line text {
+  dominant-baseline: middle;
+  font-family: var(--font-family-sans);
+  font-size: var(--text-xs);
+  fill: var(--color-text-muted);
+}
+
+.pristine-line-chart__path {
+  fill: none;
+  stroke: var(--color-blue);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.pristine-line-chart__point {
+  cursor: pointer;
+}
+
+.pristine-line-chart__point:focus {
+  outline: none;
+}
+
+.pristine-line-chart__point-hit-area {
+  fill: transparent;
+  pointer-events: all;
+}
+
+.pristine-line-chart__point-dot {
+  fill: var(--color-surface);
+  opacity: 0;
+  stroke: var(--color-blue);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.pristine-line-chart__point--visible .pristine-line-chart__point-dot,
+.pristine-line-chart__point:hover .pristine-line-chart__point-dot,
+.pristine-line-chart__point:focus-visible .pristine-line-chart__point-dot,
+.pristine-line-chart__point--active .pristine-line-chart__point-dot {
+  opacity: 1;
+}
+
+.pristine-line-chart__point:hover .pristine-line-chart__point-dot,
+.pristine-line-chart__point:focus-visible .pristine-line-chart__point-dot,
+.pristine-line-chart__point--active .pristine-line-chart__point-dot {
+  fill: var(--color-blue);
+  stroke: var(--color-surface);
+}
+
+.pristine-line-chart__tooltip {
+  pointer-events: none;
+}
+
+.pristine-line-chart__tooltip-background {
+  fill: var(--color-text);
+  stroke: var(--color-surface);
+  stroke-width: var(--border-width-1);
+}
+
+.pristine-line-chart__tooltip-text {
+  dominant-baseline: middle;
+  font-family: var(--font-family-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-surface);
+}
