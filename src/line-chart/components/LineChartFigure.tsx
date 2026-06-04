@@ -1,4 +1,4 @@
-import { classNames } from '../../shared'
+import { classNames } from '@/shared'
 
 import type { LineChartModel } from '../LineChart.model'
 import type { LineChartProps } from '../LineChart.types'

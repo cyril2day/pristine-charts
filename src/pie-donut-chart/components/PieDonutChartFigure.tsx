@@ -1,4 +1,4 @@
-import { classNames } from '../../shared'
+import { classNames } from '@/shared'
 
 import type { PieDonutChartModel } from '../PieDonutChart.model'
 import type { PieDonutChartProps } from '../PieDonutChart.types'

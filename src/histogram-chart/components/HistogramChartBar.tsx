@@ -1,4 +1,4 @@
-import { ifElse } from '../../shared/fp'
+import { ifElse } from '@/shared/fp'
 
 import type { RenderedHistogramBin } from '../HistogramChart.model'
 

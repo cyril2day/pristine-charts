@@ -1,8 +1,8 @@
 import type { KeyboardEvent } from 'react'
 
-import { classNames } from '../../shared'
+import { classNames } from '@/shared'
 import type { RenderedHistogramBin } from '../HistogramChart.model'
-import { always, ifElse } from '../../shared/fp'
+import { always, ifElse } from '@/shared/fp'
 
 import { HistogramChartBar } from './HistogramChartBar'
 import { HistogramChartCountLabel } from './HistogramChartCountLabel'

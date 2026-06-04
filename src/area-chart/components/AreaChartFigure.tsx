@@ -1,4 +1,4 @@
-import { classNames } from '../../shared'
+import { classNames } from '@/shared'
 
 import type { AreaChartModel } from '../AreaChart.model'
 import type { AreaChartProps } from '../AreaChart.types'

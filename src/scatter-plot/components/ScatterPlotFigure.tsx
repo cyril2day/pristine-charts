@@ -1,4 +1,4 @@
-import { classNames } from '../../shared'
+import { classNames } from '@/shared'
 
 import type { ScatterPlotModel } from '../ScatterPlot.model'
 import type { ScatterPlotProps } from '../ScatterPlot.types'

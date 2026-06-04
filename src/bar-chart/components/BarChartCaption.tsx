@@ -1,4 +1,4 @@
-import { matchOption } from '../../shared'
+import { matchOption } from '@/shared'
 
 import type { BarChartProps } from '../BarChart.types'
 

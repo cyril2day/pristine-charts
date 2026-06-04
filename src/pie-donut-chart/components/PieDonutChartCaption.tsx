@@ -1,4 +1,4 @@
-import { matchOption } from '../../shared'
+import { matchOption } from '@/shared'
 import type { PieDonutChartProps } from '../PieDonutChart.types'
 
 type PieDonutChartCaptionProps = Pick<PieDonutChartProps, 'caption'>

@@ -1,4 +1,4 @@
-import { classNames } from '../../shared'
+import { classNames } from '@/shared'
 
 import type { BarChartModel } from '../BarChart.model'
 import type { BarChartProps } from '../BarChart.types'

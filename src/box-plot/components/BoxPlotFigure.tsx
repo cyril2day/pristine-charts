@@ -1,4 +1,4 @@
-import { classNames } from '../../shared'
+import { classNames } from '@/shared'
 
 import type { BoxPlotModel } from '../BoxPlot.model'
 import type { BoxPlotProps } from '../BoxPlot.types'

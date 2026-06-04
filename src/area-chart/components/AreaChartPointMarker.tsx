@@ -1,7 +1,7 @@
 import type { KeyboardEvent } from 'react'
 
-import { classNames } from '../../shared'
-import { always, ifElse } from '../../shared/fp'
+import { classNames } from '@/shared'
+import { always, ifElse } from '@/shared/fp'
 import type { RenderedAreaPoint } from '../AreaChart.model'
 
 type AreaChartPointMarkerProps = {

@@ -1,4 +1,4 @@
-import { matchOption } from '../../shared'
+import { matchOption } from '@/shared'
 import type { BoxPlotProps } from '../BoxPlot.types'
 
 type BoxPlotCaptionProps = Pick<BoxPlotProps, 'caption'>

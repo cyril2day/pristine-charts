@@ -1,8 +1,8 @@
 import type { KeyboardEvent } from 'react'
 
-import { classNames } from '../../shared'
+import { classNames } from '@/shared'
 import type { RenderedBar } from '../BarChart.model'
-import { always, ifElse } from '../../shared/fp'
+import { always, ifElse } from '@/shared/fp'
 
 import { BarChartBar } from './BarChartBar'
 import { BarChartCategoryLabel } from './BarChartCategoryLabel'

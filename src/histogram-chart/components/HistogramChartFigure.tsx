@@ -1,4 +1,4 @@
-import { classNames } from '../../shared'
+import { classNames } from '@/shared'
 
 import type { HistogramChartModel } from '../HistogramChart.model'
 import type { HistogramChartProps } from '../HistogramChart.types'

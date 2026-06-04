@@ -1,4 +1,4 @@
-import { always, ifElse } from '../../shared/fp'
+import { always, ifElse } from '@/shared/fp'
 import type { PieDonutChartModel, RenderedArc } from '../PieDonutChart.model'
 
 type PieDonutChartLabelsProps = {
