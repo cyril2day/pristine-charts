@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import {
   AreaChart,
   DEFAULT_AREA_CHART_VIEW_PROPS,
@@ -31,6 +33,10 @@ import {
   ProgressBar,
 } from '@/progress-bar'
 import {
+  DEFAULT_RANKED_LIST_VIEW_PROPS,
+  RankedList,
+} from '@/ranked-list'
+import {
   DEFAULT_SCATTER_PLOT_VIEW_PROPS,
   ScatterPlot,
 } from '@/scatter-plot'
@@ -38,8 +44,44 @@ import {
   DEFAULT_SPARKLINE_VIEW_PROPS,
   Sparkline,
 } from '@/sparkline'
+import {
+  GitHubIcon,
+  MoonIcon,
+  SunIcon,
+} from '@/icons'
 import { some } from '@/shared'
-import { cond } from '@/shared/fp'
+import {
+  always,
+  cond,
+  ifElse,
+} from '@/shared/fp'
+
+type Theme = 'light' | 'dark'
+
+const GITHUB_REPOSITORY_URL = 'https://github.com/cyril2day/pristine-charts'
+const SWITCH_TO_LIGHT_THEME_LABEL = 'Switch to light theme'
+const SWITCH_TO_DARK_THEME_LABEL = 'Switch to dark theme'
+
+const isLightTheme = (theme: Theme) => theme === 'light'
+const isTrue = (value: boolean) => value
+
+const getNextTheme: (currentTheme: Theme) => Theme = ifElse(
+  isLightTheme,
+  always('dark'),
+  always('light'),
+)
+
+const getThemeToggleLabel: (isDarkTheme: boolean) => string = ifElse(
+  isTrue,
+  always(SWITCH_TO_LIGHT_THEME_LABEL),
+  always(SWITCH_TO_DARK_THEME_LABEL),
+)
+
+const renderThemeIcon = ifElse(
+  isTrue,
+  () => <SunIcon />,
+  () => <MoonIcon />,
+)
 
 const revenueDeltaData = [
   { category: 'North', value: 32 },
@@ -94,6 +136,14 @@ const budgetBreakdownData = [
   { category: 'Operations', value: 150000 },
   { category: 'HR', value: 100000 },
   { category: 'Legal', value: 50000 },
+]
+
+const regionalSalesRankingsData = [
+  { label: 'North', value: 340000, priorRank: some(3) },
+  { label: 'East', value: 290000, priorRank: some(1) },
+  { label: 'South', value: 210000, priorRank: some(3) },
+  { label: 'West', value: 180000, priorRank: some(5) },
+  { label: 'Central', value: 165000, priorRank: some(4) },
 ]
 
 const studyScoreData = [
@@ -177,6 +227,14 @@ const progressBarProps = {
   formatValue: (value: number) => `$${value.toLocaleString()}`,
 } satisfies Parameters<typeof ProgressBar>[0]
 
+const rankedListProps = {
+  ...DEFAULT_RANKED_LIST_VIEW_PROPS,
+  data: regionalSalesRankingsData,
+  ariaLabel: 'Regional sales ranked list',
+  caption: some('Regional sales ordered by current period revenue.'),
+  formatValue: (value: number) => `$${value.toLocaleString()}`,
+} satisfies Parameters<typeof RankedList>[0]
+
 const formatSignedCurrency = (value: number) => {
   const sign = cond([
     [(candidate: number) => candidate > 0, () => '+'],
@@ -200,14 +258,47 @@ const kpiCardProps = {
 } satisfies Parameters<typeof KPICard>[0]
 
 export function ChartsDemoPage() {
+  const [theme, setTheme] = useState<Theme>('light')
+  const isDarkTheme = theme === 'dark'
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme(getNextTheme)
+  }
+
   return (
     <main className="app-shell">
       <header className="app-shell__header">
-        <p className="app-shell__eyebrow">Pristine Charts</p>
-        <h1 className="app-shell__title">Current Charts</h1>
-        <p className="app-shell__lead">
-          Local examples for the chart components currently exposed by the library.
-        </p>
+        <div className="app-shell__intro">
+          <p className="app-shell__eyebrow">Pristine Charts</p>
+          <h1 className="app-shell__title">Current Charts</h1>
+          <p className="app-shell__lead">
+            Chart components currently exposed by the library.
+          </p>
+        </div>
+        <div className="app-shell__actions" aria-label="Demo actions">
+          <button
+            aria-label={getThemeToggleLabel(isDarkTheme)}
+            aria-pressed={isDarkTheme}
+            className="app-shell__icon-button"
+            onClick={toggleTheme}
+            type="button"
+          >
+            {renderThemeIcon(isDarkTheme)}
+          </button>
+          <a
+            aria-label="Open GitHub repository"
+            className="app-shell__icon-button"
+            href={GITHUB_REPOSITORY_URL}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <GitHubIcon />
+          </a>
+        </div>
       </header>
 
       <section className="app-shell__grid">
@@ -254,6 +345,11 @@ export function ChartsDemoPage() {
         <section className="app-shell__panel">
           <h2>Progress Bar</h2>
           <ProgressBar {...progressBarProps} />
+        </section>
+
+        <section className="app-shell__panel">
+          <h2>Ranked List</h2>
+          <RankedList {...rankedListProps} />
         </section>
 
         <section className="app-shell__panel">

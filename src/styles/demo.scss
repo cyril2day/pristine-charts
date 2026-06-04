@@ -8,6 +8,7 @@
 @use '../line-chart/LineChart';
 @use '../pie-donut-chart/PieDonutChart';
 @use '../progress-bar/ProgressBar';
+@use '../ranked-list/RankedList';
 @use '../scatter-plot/ScatterPlot';
 @use '../sparkline/Sparkline';
 
@@ -15,6 +16,30 @@
   color-scheme: light;
   background-color: var(--color-background);
   color: var(--color-text);
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --color-background: var(--color-white);
+  --color-surface: var(--color-white);
+  --color-surface-raised: var(--color-gray6);
+  --color-surface-muted: var(--color-gray5);
+  --color-surface-inset: var(--color-gray4);
+  --color-border: var(--color-gray4);
+  --color-border-strong: var(--color-gray3);
+  --color-text: hsla(0, 0%, 0%, 0.85);
+  --color-text-muted: hsla(0, 0%, 0%, 0.5);
+  --color-text-subtle: hsla(0, 0%, 0%, 0.25);
+  --color-text-disabled: hsla(0, 0%, 0%, 0.1);
+  --color-link: var(--color-blue);
+  --color-link-hover: var(--color-indigo);
+  --color-focus-ring: hsla(208, 100%, 50%, 0.35);
+  --shadow-color: hsla(240, 10%, 12%, 0.08);
+  --shadow-color-strong: hsla(240, 10%, 12%, 0.14);
+  --shadow-sm: 0 1px 2px var(--shadow-color);
+  --shadow-md: 0 4px 10px var(--shadow-color);
+  --shadow-lg: 0 12px 24px var(--shadow-color-strong);
+  --shadow-focus: 0 0 0 3px var(--color-focus-ring);
 }
 
 * {
@@ -41,6 +66,13 @@ body {
 }
 
 .app-shell__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.app-shell__intro {
   display: grid;
   gap: var(--space-2);
 }
@@ -65,6 +97,47 @@ body {
   color: var(--color-text-muted);
 }
 
+.app-shell__actions {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  gap: var(--space-2);
+  margin-left: auto;
+}
+
+.app-shell__icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: var(--space-0);
+  border: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.app-shell__icon-button:hover {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-muted);
+}
+
+.app-shell__icon-button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.app-shell__icon-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
 .app-shell__grid {
   display: grid;
   gap: 1rem;
@@ -83,4 +156,15 @@ body {
 .app-shell__panel h2 {
   margin: var(--space-0);
   font-size: var(--text-xl);
+}
+
+@media (max-width: 36rem) {
+  .app-shell__header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .app-shell__actions {
+    margin-left: var(--space-0);
+  }
 }
