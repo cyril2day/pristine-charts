@@ -92,6 +92,34 @@ export type {
   ValidatedDataset,
   ValidatedHistogramInput,
 } from './histogram-chart'
+export { KPICard } from './kpi-card'
+export {
+  DEFAULT_KPI_CARD_POLARITY,
+  DEFAULT_KPI_CARD_VIEW_PROPS,
+  HIGHER_IS_BETTER,
+  LOWER_IS_BETTER,
+  computeKPICard,
+  formatKPICardNumber,
+  formatKPICardPercentage,
+  formatKPICardSignedNumber,
+  validateKPICardInput,
+} from './kpi-card'
+export type {
+  ChangeAmount,
+  ChangeDirection,
+  ChangePercentage,
+  CurrentValue as KPICardCurrentValue,
+  KPICardError,
+  KPICardErrorType,
+  KPICardInput,
+  KPICardProps,
+  KPICardResult,
+  KPISummary,
+  MetricName,
+  MetricPolarity,
+  ReferenceValue,
+  ValidatedKPICardInput,
+} from './kpi-card'
 export { LineChart } from './line-chart'
 export {
   DEFAULT_LINE_CHART_VIEW_PROPS,
@@ -182,6 +210,26 @@ export type {
   ValidatedScatterPlotInput,
   ValidatedScatterPlotPoint,
 } from './scatter-plot'
+export { Sparkline } from './sparkline'
+export {
+  DEFAULT_SPARKLINE_VIEW_PROPS,
+  computeSparkline,
+  validateSparklineInput,
+} from './sparkline'
+export type {
+  SortedDataset as SortedSparklineDataset,
+  SparklineCoordinateValue,
+  SparklineError,
+  SparklineErrorType,
+  SparklineInput,
+  SparklinePoint,
+  SparklineProps,
+  SparklineResult,
+  SparklineSegment,
+  ValidatedDataset as ValidatedSparklineDataset,
+  ValidatedSparklineInput,
+  ValidatedSparklinePoint,
+} from './sparkline'
 export {
   andThenResult,
   classNames,
