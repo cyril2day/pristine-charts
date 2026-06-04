@@ -15,6 +15,10 @@ import {
   LineChart,
 } from '@/line-chart'
 import {
+  DEFAULT_PIE_DONUT_CHART_VIEW_PROPS,
+  PieDonutChart,
+} from '@/pie-donut-chart'
+import {
   DEFAULT_SCATTER_PLOT_VIEW_PROPS,
   ScatterPlot,
 } from '@/scatter-plot'
@@ -50,6 +54,14 @@ const weeklyActiveUsersData = [
   { x: 5, y: 2100 },
   { x: 6, y: 1950 },
   { x: 7, y: 1600 },
+]
+
+const budgetBreakdownData = [
+  { category: 'Engineering', value: 450000 },
+  { category: 'Marketing', value: 200000 },
+  { category: 'Operations', value: 150000 },
+  { category: 'HR', value: 100000 },
+  { category: 'Legal', value: 50000 },
 ]
 
 const studyScoreData = [
@@ -94,6 +106,15 @@ const areaChartProps = {
   caption: some('Daily active users with the filled region anchored to zero.'),
 } satisfies Parameters<typeof AreaChart>[0]
 
+const pieDonutChartProps = {
+  ...DEFAULT_PIE_DONUT_CHART_VIEW_PROPS,
+  data: budgetBreakdownData,
+  ariaLabel: 'Department budget donut chart',
+  caption: some('Annual budget share by department.'),
+  variant: some({ kind: 'donut', innerRadius: 0.54 }),
+  formatValue: (value: number) => `$${value.toLocaleString()}`,
+} satisfies Parameters<typeof PieDonutChart>[0]
+
 const scatterPlotProps = {
   ...DEFAULT_SCATTER_PLOT_VIEW_PROPS,
   data: studyScoreData,
@@ -131,6 +152,11 @@ export function ChartsDemoPage() {
         <section className="app-shell__panel">
           <h2>Area Chart</h2>
           <AreaChart {...areaChartProps} />
+        </section>
+
+        <section className="app-shell__panel">
+          <h2>Pie / Donut Chart</h2>
+          <PieDonutChart {...pieDonutChartProps} />
         </section>
 
         <section className="app-shell__panel">
