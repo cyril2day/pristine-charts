@@ -143,6 +143,25 @@ export type {
   ValidatedSlice,
   Value,
 } from './pie-donut-chart'
+export { ProgressBar } from './progress-bar'
+export {
+  DEFAULT_PROGRESS_BAR_VIEW_PROPS,
+  computeProgressBar,
+  formatProgressBarNumber,
+  formatProgressBarPercentage,
+  validateProgressBarInput,
+} from './progress-bar'
+export type {
+  CurrentValue,
+  ProgressBarError,
+  ProgressBarErrorType,
+  ProgressBarInput,
+  ProgressBarProps,
+  ProgressBarResult,
+  Ratio,
+  Total,
+  ValidatedProgressBarInput,
+} from './progress-bar'
 export { ScatterPlot } from './scatter-plot'
 export {
   DEFAULT_SCATTER_PLOT_VIEW_PROPS,
