@@ -5,15 +5,16 @@ A small tree-shakeable React component library built with Vite, TypeScript, D3, 
 ## What this project contains
 
 - A public library entry for React consumers
-- A deep import path for the chart component
+- Deep import paths for individual chart components
 - A demo app for local development and visual checks
-- Vitest coverage for the chart component
+- Vitest coverage for chart rendering and domain rules
 
 ## Features
 
 - Tree-shakeable package exports
 - React-only rendering for UI elements
 - D3-based chart calculations
+- Typed validation for chart domain errors
 - Ramda utilities for composable data handling
 - Sass styling support through pristine-styles
 
@@ -42,21 +43,35 @@ pnpm build
 
 Root export:
 
-```ts
+```tsx
 import { BarChart } from 'pristine-charts'
+
+export function Example() {
+  return (
+    <BarChart
+      data={[
+        { category: 'North', value: 32 },
+        { category: 'South', value: -14 },
+      ]}
+    />
+  )
+}
 ```
 
 Deep export:
 
-```ts
+```tsx
 import { BarChart } from 'pristine-charts/bar-chart'
+import { HistogramChart } from 'pristine-charts/histogram-chart'
 ```
 
 ## Project structure
 
 ```txt
 src/
-  bar-chart/      # chart component and types
+  bar-chart/      # bar chart component, domain, and types
+  chart-error/    # reusable chart error component
+  histogram-chart/ # histogram component, domain, and types
   shared/         # reusable helpers
   styles/         # Sass demo styling
   App.tsx         # demo app shell
