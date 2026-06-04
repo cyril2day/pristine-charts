@@ -1,4 +1,8 @@
 import {
+  AreaChart,
+  DEFAULT_AREA_CHART_VIEW_PROPS,
+} from '@/area-chart'
+import {
   BarChart,
   DEFAULT_BAR_CHART_VIEW_PROPS,
 } from '@/bar-chart'
@@ -38,6 +42,16 @@ const weeklyTemperatureData = [
   { x: 7, y: 26 },
 ]
 
+const weeklyActiveUsersData = [
+  { x: 1, y: 1200 },
+  { x: 2, y: 1500 },
+  { x: 3, y: 1350 },
+  { x: 4, y: 1800 },
+  { x: 5, y: 2100 },
+  { x: 6, y: 1950 },
+  { x: 7, y: 1600 },
+]
+
 const studyScoreData = [
   { x: 2, y: 55 },
   { x: 3, y: 60 },
@@ -73,6 +87,13 @@ const lineChartProps = {
   caption: some('Daily temperature readings ordered by numeric weekday.'),
 } satisfies Parameters<typeof LineChart>[0]
 
+const areaChartProps = {
+  ...DEFAULT_AREA_CHART_VIEW_PROPS,
+  data: weeklyActiveUsersData,
+  ariaLabel: 'Weekly active users area chart',
+  caption: some('Daily active users with the filled region anchored to zero.'),
+} satisfies Parameters<typeof AreaChart>[0]
+
 const scatterPlotProps = {
   ...DEFAULT_SCATTER_PLOT_VIEW_PROPS,
   data: studyScoreData,
@@ -105,6 +126,11 @@ export function ChartsDemoPage() {
         <section className="app-shell__panel">
           <h2>Line Chart</h2>
           <LineChart {...lineChartProps} />
+        </section>
+
+        <section className="app-shell__panel">
+          <h2>Area Chart</h2>
+          <AreaChart {...areaChartProps} />
         </section>
 
         <section className="app-shell__panel">
