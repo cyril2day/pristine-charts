@@ -63,9 +63,11 @@ Deep export:
 ```tsx
 import { BarChart } from 'pristine-charts/bar-chart'
 import { HistogramChart } from 'pristine-charts/histogram-chart'
+import { KPICard } from 'pristine-charts/kpi-card'
 import { LineChart } from 'pristine-charts/line-chart'
 import { AreaChart } from 'pristine-charts/area-chart'
 import { ScatterPlot } from 'pristine-charts/scatter-plot'
+import { Sparkline } from 'pristine-charts/sparkline'
 ```
 
 ## Project structure
@@ -76,8 +78,10 @@ src/
   bar-chart/      # bar chart component, domain, and types
   chart-error/    # reusable chart error component
   histogram-chart/ # histogram component, domain, and types
+  kpi-card/       # KPI card component, domain, and types
   line-chart/     # line chart component, domain, and types
   scatter-plot/   # scatter plot component, domain, and types
+  sparkline/      # sparkline component, domain, and types
   shared/         # reusable helpers
   styles/         # Sass demo styling
   App.tsx         # demo app shell
