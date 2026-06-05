@@ -57,6 +57,11 @@ import {
   Sparkline,
 } from '@/sparkline'
 import {
+  DEFAULT_VARIANCE_CHART_VIEW_PROPS,
+  VARIANCE_LOWER_IS_BETTER,
+  VarianceChart,
+} from '@/variance-chart'
+import {
   GitHubIcon,
   MoonIcon,
   SunIcon,
@@ -178,6 +183,24 @@ const studyScoreData = [
   { x: 6, y: 75 },
 ]
 
+const departmentalCostVarianceData = [
+  { category: 'Marketing', actualValue: 112_000, budgetValue: 100_000 },
+  { category: 'Operations', actualValue: 92_000, budgetValue: 100_000 },
+  { category: 'HR', actualValue: 50_000, budgetValue: 50_000 },
+  { category: 'Support', actualValue: 73_000, budgetValue: 68_000 },
+  { category: 'Legal', actualValue: 41_000, budgetValue: 48_000 },
+]
+
+const formatSignedCurrency = (value: number) => {
+  const sign = cond([
+    [(candidate: number) => candidate > 0, () => '+'],
+    [(candidate: number) => candidate < 0, () => '-'],
+    [() => true, () => ''],
+  ])(value)
+
+  return `${sign}$${Math.abs(value).toLocaleString()}`
+}
+
 const barChartProps = {
   ...DEFAULT_BAR_CHART_VIEW_PROPS,
   data: revenueDeltaData,
@@ -246,6 +269,16 @@ const scatterPlotProps = {
   caption: some('Student study hours plotted against exam score.'),
 } satisfies Parameters<typeof ScatterPlot>[0]
 
+const varianceChartProps = {
+  ...DEFAULT_VARIANCE_CHART_VIEW_PROPS,
+  data: departmentalCostVarianceData,
+  polarity: some(VARIANCE_LOWER_IS_BETTER),
+  ariaLabel: 'Departmental cost variance chart',
+  caption: some('Departmental actual spend compared with budget.'),
+  formatValue: (value: number) => `$${value.toLocaleString()}`,
+  formatVariance: formatSignedCurrency,
+} satisfies Parameters<typeof VarianceChart>[0]
+
 const progressBarProps = {
   ...DEFAULT_PROGRESS_BAR_VIEW_PROPS,
   currentValue: 73_000,
@@ -291,16 +324,6 @@ const rankedListProps = {
   caption: some('Regional sales ordered by current period revenue.'),
   formatValue: (value: number) => `$${value.toLocaleString()}`,
 } satisfies Parameters<typeof RankedList>[0]
-
-const formatSignedCurrency = (value: number) => {
-  const sign = cond([
-    [(candidate: number) => candidate > 0, () => '+'],
-    [(candidate: number) => candidate < 0, () => '-'],
-    [() => true, () => ''],
-  ])(value)
-
-  return `${sign}$${Math.abs(value).toLocaleString()}`
-}
 
 const kpiCardProps = {
   ...DEFAULT_KPI_CARD_VIEW_PROPS,
@@ -402,6 +425,11 @@ export function ChartsDemoPage() {
         <section className="app-shell__panel">
           <h2>Scatter Plot</h2>
           <ScatterPlot {...scatterPlotProps} />
+        </section>
+
+        <section className="app-shell__panel">
+          <h2>Variance Chart</h2>
+          <VarianceChart {...varianceChartProps} />
         </section>
 
         <section className="app-shell__panel">
