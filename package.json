@@ -84,6 +84,11 @@
       "types": "./dist/sparkline/index.d.ts",
       "import": "./dist/sparkline/index.js",
       "require": "./dist/sparkline/index.cjs"
+    },
+    "./variance-chart": {
+      "types": "./dist/variance-chart/index.d.ts",
+      "import": "./dist/variance-chart/index.js",
+      "require": "./dist/variance-chart/index.cjs"
     }
   },
   "files": [

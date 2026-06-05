@@ -52,6 +52,7 @@ export default defineConfig({
     'ranked-list/index': 'src/ranked-list/index.ts',
     'scatter-plot/index': 'src/scatter-plot/index.ts',
     'sparkline/index': 'src/sparkline/index.ts',
+    'variance-chart/index': 'src/variance-chart/index.ts',
   },
   format: ['esm', 'cjs'],
   dts: true,
