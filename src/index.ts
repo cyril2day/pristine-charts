@@ -70,6 +70,30 @@ export type {
   ValidatedBulletChartInput,
   ValidatedPerformanceBand,
 } from './bullet-chart'
+export { FunnelChart } from './funnel-chart'
+export {
+  DEFAULT_FUNNEL_CHART_VIEW_PROPS,
+  computeFunnelChart,
+  formatFunnelChartNumber,
+  formatFunnelChartPercentage,
+  validateFunnelChartInput,
+} from './funnel-chart'
+export type {
+  ConversionRate,
+  DropOff,
+  DropOffRate,
+  FunnelChartDatum,
+  FunnelChartError,
+  FunnelChartErrorType,
+  FunnelChartInput,
+  FunnelChartProps,
+  FunnelChartResult,
+  FunnelStage,
+  StageName,
+  StageValue,
+  ValidatedDataset as ValidatedFunnelChartDataset,
+  ValidatedFunnelChartDatum,
+} from './funnel-chart'
 export { BoxPlot } from './box-plot'
 export {
   DEFAULT_BOX_PLOT_VIEW_PROPS,

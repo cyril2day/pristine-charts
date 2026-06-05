@@ -35,6 +35,11 @@
       "import": "./dist/bullet-chart/index.js",
       "require": "./dist/bullet-chart/index.cjs"
     },
+    "./funnel-chart": {
+      "types": "./dist/funnel-chart/index.d.ts",
+      "import": "./dist/funnel-chart/index.js",
+      "require": "./dist/funnel-chart/index.cjs"
+    },
     "./histogram-chart": {
       "types": "./dist/histogram-chart/index.d.ts",
       "import": "./dist/histogram-chart/index.js",
