@@ -25,6 +25,10 @@ import {
   FunnelChart,
 } from '@/funnel-chart'
 import {
+  DEFAULT_GAUGE_CHART_VIEW_PROPS,
+  GaugeChart,
+} from '@/gauge-chart'
+import {
   DEFAULT_KPI_CARD_VIEW_PROPS,
   KPICard,
 } from '@/kpi-card'
@@ -265,6 +269,21 @@ const bulletChartProps = {
   formatValue: (value: number) => `$${value.toLocaleString()}`,
 } satisfies Parameters<typeof BulletChart>[0]
 
+const gaugeChartProps = {
+  ...DEFAULT_GAUGE_CHART_VIEW_PROPS,
+  currentValue: 32,
+  minimum: 0,
+  maximum: 100,
+  zones: [
+    { label: 'At risk', lowerBound: 0, upperBound: 45 },
+    { label: 'Watch', lowerBound: 45, upperBound: 70 },
+    { label: 'Healthy', lowerBound: 70, upperBound: 100 },
+  ],
+  ariaLabel: 'Customer satisfaction gauge chart',
+  caption: some('Customer satisfaction score across performance zones.'),
+  formatValue: (value: number) => `${value.toLocaleString()}%`,
+} satisfies Parameters<typeof GaugeChart>[0]
+
 const rankedListProps = {
   ...DEFAULT_RANKED_LIST_VIEW_PROPS,
   data: regionalSalesRankingsData,
@@ -393,6 +412,11 @@ export function ChartsDemoPage() {
         <section className="app-shell__panel">
           <h2>Bullet Chart</h2>
           <BulletChart {...bulletChartProps} />
+        </section>
+
+        <section className="app-shell__panel">
+          <h2>Gauge Chart</h2>
+          <GaugeChart {...gaugeChartProps} />
         </section>
 
         <section className="app-shell__panel">

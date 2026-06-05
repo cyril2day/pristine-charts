@@ -1,0 +1,124 @@
+.pristine-gauge-chart {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-0);
+}
+
+.pristine-gauge-chart__caption {
+  margin: var(--space-0);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.pristine-gauge-chart__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  border: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-surface-raised) 50%, var(--color-surface)) 0%,
+      var(--color-surface) 58%
+    );
+}
+
+.pristine-gauge-chart__zone {
+  stroke: var(--color-surface);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.pristine-gauge-chart__zone--tone-0 {
+  fill: var(--color-red);
+}
+
+.pristine-gauge-chart__zone--tone-1 {
+  fill: var(--color-orange);
+}
+
+.pristine-gauge-chart__zone--tone-2 {
+  fill: var(--color-green);
+}
+
+.pristine-gauge-chart__zone--tone-3 {
+  fill: var(--color-blue);
+}
+
+.pristine-gauge-chart__zone--tone-4 {
+  fill: var(--color-teal);
+}
+
+.pristine-gauge-chart__zone--tone-5 {
+  fill: var(--color-purple);
+}
+
+.pristine-gauge-chart__zone--tone-6 {
+  fill: var(--color-yellow);
+}
+
+.pristine-gauge-chart__zone--tone-7 {
+  fill: var(--color-indigo);
+}
+
+.pristine-gauge-chart__zone-group--active .pristine-gauge-chart__zone {
+  filter: drop-shadow(0 2px 3px var(--shadow-color-strong));
+}
+
+.pristine-gauge-chart__needle-halo {
+  stroke: var(--color-surface);
+  stroke-width: 8;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.pristine-gauge-chart__needle-line {
+  stroke: var(--color-text);
+  stroke-width: 3;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.pristine-gauge-chart__needle-cap-halo {
+  fill: var(--color-surface);
+}
+
+.pristine-gauge-chart__needle-cap {
+  fill: var(--color-text);
+}
+
+.pristine-gauge-chart__value-label,
+.pristine-gauge-chart__active-zone-label,
+.pristine-gauge-chart__zone-label,
+.pristine-gauge-chart__tick {
+  dominant-baseline: middle;
+  font-family: var(--font-family-sans);
+  fill: var(--color-text-muted);
+}
+
+.pristine-gauge-chart__value-label {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  fill: var(--color-text);
+}
+
+.pristine-gauge-chart__active-zone-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.pristine-gauge-chart__zone-label,
+.pristine-gauge-chart__tick {
+  font-size: var(--text-xs);
+}
+
+.pristine-gauge-chart__zone-label {
+  font-weight: var(--font-weight-medium);
+}
+
+.pristine-gauge-chart__zone-group--active .pristine-gauge-chart__zone-label {
+  fill: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+}

@@ -94,6 +94,30 @@ export type {
   ValidatedDataset as ValidatedFunnelChartDataset,
   ValidatedFunnelChartDatum,
 } from './funnel-chart'
+export { GaugeChart } from './gauge-chart'
+export {
+  DEFAULT_GAUGE_CHART_VIEW_PROPS,
+  computeGaugeChart,
+  formatGaugeChartNumber,
+  validateGaugeChartInput,
+} from './gauge-chart'
+export type {
+  CurrentValue as GaugeChartCurrentValue,
+  GaugeChartError,
+  GaugeChartErrorType,
+  GaugeChartInput,
+  GaugeChartProps,
+  GaugeChartResult,
+  GaugeChartSummary,
+  NeedlePosition,
+  PerformanceZone,
+  ScaleMaximum,
+  ScaleMinimum,
+  ScaleRange as GaugeChartScaleRange,
+  ValidatedGaugeChartInput,
+  ValidatedPerformanceZone,
+  ZoneLabel,
+} from './gauge-chart'
 export { BoxPlot } from './box-plot'
 export {
   DEFAULT_BOX_PLOT_VIEW_PROPS,
