@@ -1,0 +1,114 @@
+.pristine-variance-chart {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-0);
+}
+
+.pristine-variance-chart__caption {
+  margin: var(--space-0);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.pristine-variance-chart__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  border: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.pristine-variance-chart__plot {
+  fill: var(--color-surface);
+}
+
+.pristine-variance-chart__bar {
+  shape-rendering: crispEdges;
+}
+
+.pristine-variance-chart__entry {
+  cursor: pointer;
+}
+
+.pristine-variance-chart__entry:focus {
+  outline: none;
+}
+
+.pristine-variance-chart__entry:hover .pristine-variance-chart__bar,
+.pristine-variance-chart__entry:focus-visible .pristine-variance-chart__bar,
+.pristine-variance-chart__entry--active .pristine-variance-chart__bar {
+  opacity: 0.86;
+  stroke: var(--color-text);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.pristine-variance-chart__bar-hit-area {
+  fill: transparent;
+  pointer-events: all;
+}
+
+.pristine-variance-chart__bar--favourable {
+  fill: var(--color-green);
+}
+
+.pristine-variance-chart__bar--unfavourable {
+  fill: var(--color-red);
+}
+
+.pristine-variance-chart__bar--on-budget {
+  fill: var(--color-border-strong);
+}
+
+.pristine-variance-chart__axis {
+  stroke: var(--color-border-strong);
+  stroke-width: var(--border-width-1);
+  shape-rendering: crispEdges;
+}
+
+.pristine-variance-chart__grid-line line {
+  stroke: var(--color-border);
+  stroke-width: var(--border-width-1);
+  shape-rendering: crispEdges;
+}
+
+.pristine-variance-chart__grid-line text,
+.pristine-variance-chart__label {
+  dominant-baseline: middle;
+  font-family: var(--font-family-sans);
+  font-size: var(--text-xs);
+  fill: var(--color-text-muted);
+}
+
+.pristine-variance-chart__tick-label {
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.pristine-variance-chart__value {
+  dominant-baseline: middle;
+  font-family: var(--font-family-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-text);
+}
+
+.pristine-variance-chart__tooltip {
+  pointer-events: none;
+}
+
+.pristine-variance-chart__tooltip-background {
+  fill: var(--color-text);
+  stroke: var(--color-surface);
+  stroke-width: var(--border-width-1);
+}
+
+.pristine-variance-chart__tooltip-text {
+  dominant-baseline: middle;
+  font-family: var(--font-family-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-surface);
+}

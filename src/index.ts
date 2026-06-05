@@ -325,6 +325,38 @@ export type {
   ValidatedSparklineInput,
   ValidatedSparklinePoint,
 } from './sparkline'
+export { VarianceChart } from './variance-chart'
+export {
+  DEFAULT_VARIANCE_CHART_DISPLAY_MODE,
+  DEFAULT_VARIANCE_CHART_VIEW_PROPS,
+  VARIANCE_HIGHER_IS_BETTER,
+  VARIANCE_LOWER_IS_BETTER,
+  computeVarianceChart,
+  formatVarianceChartNumber,
+  formatVarianceChartPercentage,
+  formatVarianceChartSignedNumber,
+  validateVarianceChartInput,
+} from './variance-chart'
+export type {
+  ActualValue,
+  BudgetValue,
+  Category as VarianceChartCategory,
+  Favourability,
+  ValidatedDataset as ValidatedVarianceChartDataset,
+  ValidatedVarianceChartInput,
+  ValidatedVarianceItem,
+  Variance,
+  VarianceChartError,
+  VarianceChartErrorType,
+  VarianceChartInput,
+  VarianceChartProps,
+  VarianceChartResult,
+  VarianceDisplayMode,
+  VarianceEntry,
+  VarianceItem,
+  VarianceMetricPolarity,
+  VariancePercentage,
+} from './variance-chart'
 export {
   andThenResult,
   classNames,
