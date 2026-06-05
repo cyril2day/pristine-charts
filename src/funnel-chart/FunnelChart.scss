@@ -1,0 +1,111 @@
+.pristine-funnel-chart {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-0);
+}
+
+.pristine-funnel-chart__caption {
+  margin: var(--space-0);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.pristine-funnel-chart__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  border: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.pristine-funnel-chart__plot {
+  fill: var(--color-surface);
+}
+
+.pristine-funnel-chart__stage {
+  cursor: pointer;
+}
+
+.pristine-funnel-chart__stage:focus {
+  outline: none;
+}
+
+.pristine-funnel-chart__segment {
+  stroke: var(--color-surface);
+  stroke-width: var(--border-width-1);
+  vector-effect: non-scaling-stroke;
+}
+
+.pristine-funnel-chart__stage--tone-1 .pristine-funnel-chart__segment {
+  fill: var(--color-blue);
+}
+
+.pristine-funnel-chart__stage--tone-2 .pristine-funnel-chart__segment {
+  fill: var(--color-green);
+}
+
+.pristine-funnel-chart__stage--tone-3 .pristine-funnel-chart__segment {
+  fill: var(--color-indigo);
+}
+
+.pristine-funnel-chart__stage--tone-4 .pristine-funnel-chart__segment {
+  fill: var(--color-yellow);
+}
+
+.pristine-funnel-chart__stage--tone-5 .pristine-funnel-chart__segment {
+  fill: var(--color-red);
+}
+
+.pristine-funnel-chart__stage:hover .pristine-funnel-chart__segment,
+.pristine-funnel-chart__stage:focus-visible .pristine-funnel-chart__segment,
+.pristine-funnel-chart__stage--active .pristine-funnel-chart__segment {
+  opacity: 0.86;
+  stroke: var(--color-text);
+  stroke-width: 2;
+}
+
+.pristine-funnel-chart__hit-area {
+  fill: transparent;
+  pointer-events: all;
+}
+
+.pristine-funnel-chart__label,
+.pristine-funnel-chart__value {
+  dominant-baseline: middle;
+  font-family: var(--font-family-sans);
+  font-size: var(--text-xs);
+}
+
+.pristine-funnel-chart__label {
+  fill: var(--color-text-muted);
+}
+
+.pristine-funnel-chart__value {
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-text);
+}
+
+.pristine-funnel-chart__conversion {
+  font-weight: var(--font-weight-regular);
+  fill: var(--color-text-muted);
+}
+
+.pristine-funnel-chart__tooltip {
+  pointer-events: none;
+}
+
+.pristine-funnel-chart__tooltip-background {
+  fill: var(--color-text);
+  stroke: var(--color-surface);
+  stroke-width: var(--border-width-1);
+}
+
+.pristine-funnel-chart__tooltip-text {
+  dominant-baseline: middle;
+  font-family: var(--font-family-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-surface);
+}
