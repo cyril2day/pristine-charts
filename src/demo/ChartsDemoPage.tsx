@@ -21,6 +21,10 @@ import {
   HistogramChart,
 } from '@/histogram-chart'
 import {
+  DEFAULT_FUNNEL_CHART_VIEW_PROPS,
+  FunnelChart,
+} from '@/funnel-chart'
+import {
   DEFAULT_KPI_CARD_VIEW_PROPS,
   KPICard,
 } from '@/kpi-card'
@@ -142,6 +146,14 @@ const budgetBreakdownData = [
   { category: 'Legal', value: 50000 },
 ]
 
+const salesFunnelData = [
+  { stage: 'Leads', value: 1200 },
+  { stage: 'Qualified', value: 780 },
+  { stage: 'Proposal', value: 360 },
+  { stage: 'Negotiation', value: 180 },
+  { stage: 'Closed Won', value: 72 },
+]
+
 const regionalSalesRankingsData = [
   { label: 'North', value: 340000, priorRank: some(3) },
   { label: 'East', value: 290000, priorRank: some(1) },
@@ -214,6 +226,14 @@ const pieDonutChartProps = {
   variant: some({ kind: 'donut', innerRadius: 0.54 }),
   formatValue: (value: number) => `$${value.toLocaleString()}`,
 } satisfies Parameters<typeof PieDonutChart>[0]
+
+const funnelChartProps = {
+  ...DEFAULT_FUNNEL_CHART_VIEW_PROPS,
+  data: salesFunnelData,
+  ariaLabel: 'Sales pipeline funnel chart',
+  caption: some('Sales pipeline stage conversion from lead to closed won.'),
+  formatValue: (value: number) => value.toLocaleString(),
+} satisfies Parameters<typeof FunnelChart>[0]
 
 const scatterPlotProps = {
   ...DEFAULT_SCATTER_PLOT_VIEW_PROPS,
@@ -353,6 +373,11 @@ export function ChartsDemoPage() {
         <section className="app-shell__panel">
           <h2>Pie / Donut Chart</h2>
           <PieDonutChart {...pieDonutChartProps} />
+        </section>
+
+        <section className="app-shell__panel">
+          <h2>Funnel Chart</h2>
+          <FunnelChart {...funnelChartProps} />
         </section>
 
         <section className="app-shell__panel">
