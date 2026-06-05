@@ -43,6 +43,7 @@ export default defineConfig({
     'box-plot/index': 'src/box-plot/index.ts',
     'bullet-chart/index': 'src/bullet-chart/index.ts',
     'funnel-chart/index': 'src/funnel-chart/index.ts',
+    'gauge-chart/index': 'src/gauge-chart/index.ts',
     'histogram-chart/index': 'src/histogram-chart/index.ts',
     'kpi-card/index': 'src/kpi-card/index.ts',
     'line-chart/index': 'src/line-chart/index.ts',

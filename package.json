@@ -40,6 +40,11 @@
       "import": "./dist/funnel-chart/index.js",
       "require": "./dist/funnel-chart/index.cjs"
     },
+    "./gauge-chart": {
+      "types": "./dist/gauge-chart/index.d.ts",
+      "import": "./dist/gauge-chart/index.js",
+      "require": "./dist/gauge-chart/index.cjs"
+    },
     "./histogram-chart": {
       "types": "./dist/histogram-chart/index.d.ts",
       "import": "./dist/histogram-chart/index.js",
