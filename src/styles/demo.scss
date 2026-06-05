@@ -54,7 +54,34 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: var(--font-family-sans);
+  font-size: var(--text-base);
+  line-height: var(--line-height-normal);
   background: var(--color-background);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 0.625rem;
+  height: 0.625rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border: 0.1875rem solid transparent;
+  border-radius: var(--radius-md);
+  background-color: var(--color-border-strong);
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-subtle);
 }
 
 #root {
@@ -71,7 +98,8 @@ body {
 
 .app-shell__header {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
+  flex-direction: column;
   justify-content: space-between;
   gap: var(--space-4);
 }
@@ -84,15 +112,16 @@ body {
 .app-shell__eyebrow {
   margin: var(--space-0);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--letter-spacing-widest);
   font-size: var(--text-xs);
+  line-height: var(--line-height-tight);
   color: var(--color-text-muted);
 }
 
 .app-shell__title {
   margin: var(--space-0);
   font-size: var(--text-3xl);
-  line-height: 1.1;
+  line-height: var(--line-height-tight);
 }
 
 .app-shell__lead {
@@ -106,7 +135,7 @@ body {
   flex: 0 0 auto;
   justify-content: flex-start;
   gap: var(--space-2);
-  margin-left: auto;
+  margin-left: var(--space-0);
 }
 
 .app-shell__icon-button {
@@ -150,25 +179,457 @@ body {
 
 .app-shell__panel {
   display: grid;
+  align-content: start;
   gap: var(--space-3);
+  min-width: 0;
   padding: var(--space-4);
   border: var(--border-width-1) var(--border-style-solid) var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-surface-raised);
 }
 
-.app-shell__panel h2 {
+.app-shell__panel > :not(.app-shell__panel-header) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.app-shell__panel figure,
+.app-shell__panel svg {
+  max-width: 100%;
+}
+
+.app-shell__panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.app-shell__panel h2,
+.app-shell__panel-header h2 {
   margin: var(--space-0);
   font-size: var(--text-xl);
 }
 
-@media (max-width: 36rem) {
+.app-shell__demo-button,
+.chart-demo-modal__close,
+.chart-demo-row-control__action,
+.chart-demo-row-control__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0 var(--space-3);
+  border: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: var(--text-sm);
+  line-height: var(--line-height-none);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.app-shell__demo-button:hover,
+.chart-demo-modal__close:hover,
+.chart-demo-row-control__action:hover,
+.chart-demo-row-control__remove:hover {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-muted);
+}
+
+.app-shell__demo-button:focus-visible,
+.chart-demo-modal__close:focus-visible,
+.chart-demo-row-control__action:focus-visible,
+.chart-demo-row-control__remove:focus-visible,
+.chart-demo-control input:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.chart-demo-modal {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(0.75rem, 3vw, 2rem);
+}
+
+.chart-demo-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: hsla(220, 16%, 10%, 0.55);
+  cursor: pointer;
+}
+
+.chart-demo-modal__panel {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  width: min(78rem, 100%);
+  max-height: min(52rem, calc(100dvh - 1.5rem));
+  overflow: hidden;
+  border: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-lg);
+}
+
+.chart-demo-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-bottom: var(--border-width-1) var(--border-style-solid) var(--color-border);
+}
+
+.chart-demo-modal__eyebrow {
+  margin: var(--space-0) 0 var(--space-1);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-widest);
+  font-size: var(--text-xs);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-muted);
+}
+
+.chart-demo-modal__header h2,
+.chart-demo-modal__summary h3,
+.chart-demo-row-control__header h3 {
+  margin: var(--space-0);
+}
+
+.chart-demo-modal__header h2 {
+  font-size: var(--text-2xl);
+  line-height: var(--line-height-tight);
+}
+
+.chart-demo-modal__content {
+  display: grid;
+  grid-template-areas:
+    'chart'
+    'summary'
+    'data';
+  grid-template-rows: minmax(0, 27fr) minmax(0, 34fr) minmax(0, 39fr);
+  min-height: 0;
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+.chart-demo-modal__chart {
+  grid-area: chart;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+  padding: var(--space-4);
+  overflow: hidden;
+  background: var(--color-surface-raised);
+  border-bottom: var(--border-width-1) var(--border-style-solid) var(--color-border);
+}
+
+.chart-demo-modal__chart :is(figure, .pristine-progress-bar, .pristine-kpi-card) {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  margin: var(--space-0);
+}
+
+.chart-demo-modal__chart > * {
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.chart-demo-modal__chart svg {
+  display: block;
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.chart-demo-modal__chart figcaption {
+  overflow: hidden;
+  max-width: 100%;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chart-demo-modal__reference,
+.chart-demo-modal__summary {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.chart-demo-modal__reference {
+  grid-area: summary;
+  align-content: start;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--space-4);
+  border-bottom: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  background: var(--color-surface);
+  overscroll-behavior: contain;
+}
+
+.chart-demo-modal__reference .chart-demo-modal__summary + .chart-demo-modal__summary {
+  padding-top: var(--space-4);
+  margin-top: var(--space-2);
+  border-top: var(--border-width-1) var(--border-style-solid) var(--color-border);
+}
+
+.chart-demo-modal__data-editor {
+  grid-area: data;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: var(--space-3);
+  min-height: 0;
+  padding: var(--space-4);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.chart-demo-modal__data-editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-width: 0;
+  border-bottom: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  padding-bottom: var(--space-3);
+}
+
+.chart-demo-modal__summary h3,
+.chart-demo-modal__data-editor h3,
+.chart-demo-row-control__header h3 {
+  font-size: var(--text-base);
+  line-height: var(--line-height-snug);
+}
+
+.chart-demo-modal__data-editor h3 {
+  min-width: 0;
+  margin: var(--space-0);
+}
+
+.chart-demo-modal__summary p,
+.chart-demo-modal__summary ul {
+  margin: var(--space-0);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-muted);
+}
+
+.chart-demo-modal__summary ul {
+  padding-left: 1.15rem;
+}
+
+.chart-demo-modal__summary code {
+  display: block;
+  overflow-wrap: anywhere;
+  padding: var(--space-3);
+  border: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-inset);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-normal);
+}
+
+.chart-demo-modal__data-shape {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.chart-demo-modal__data-shape-table-wrap {
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.chart-demo-modal__data-shape-table {
+  width: 100%;
+  min-width: 24rem;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  line-height: var(--line-height-snug);
+}
+
+.chart-demo-modal__data-shape-table th,
+.chart-demo-modal__data-shape-table td {
+  padding: var(--space-2);
+  border: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.chart-demo-modal__data-shape-table th {
+  background: var(--color-surface-inset);
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+}
+
+.chart-demo-modal__data-shape-table td {
+  color: var(--color-text-muted);
+}
+
+.chart-demo-modal__data-shape-table td:first-child {
+  color: var(--color-text);
+  font-family: var(--font-family-mono);
+}
+
+.chart-demo-modal__data-shape-note {
+  font-size: var(--text-sm);
+  line-height: var(--line-height-normal);
+}
+
+.chart-demo-controls,
+.chart-demo-row-control,
+.chart-demo-row-control__rows {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.chart-demo-controls {
+  align-content: start;
+  min-height: 0;
+  overflow: auto;
+  padding-right: var(--space-1);
+  overscroll-behavior: contain;
+}
+
+.chart-demo-row-control {
+  min-width: 0;
+}
+
+.chart-demo-row-control__header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+.chart-demo-row-control__header h3 {
+  margin-right: auto;
+}
+
+.chart-demo-row-control__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  align-items: end;
+  padding: var(--space-3);
+  border: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-raised);
+}
+
+.chart-demo-control {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.chart-demo-control span {
+  overflow: hidden;
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  line-height: var(--line-height-tight);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chart-demo-control input {
+  width: 100%;
+  min-height: 2rem;
+  padding: 0 var(--space-2);
+  border: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: var(--text-sm);
+  line-height: var(--line-height-normal);
+}
+
+.chart-demo-row-control__remove {
+  color: var(--color-text-muted);
+}
+
+@include breakpoint-up('xs') {
   .app-shell__header {
-    align-items: stretch;
-    flex-direction: column;
+    align-items: flex-start;
+    flex-direction: row;
   }
 
   .app-shell__actions {
-    margin-left: var(--space-0);
+    margin-left: auto;
+  }
+
+  .chart-demo-row-control__row {
+    grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)) auto;
+  }
+}
+
+@include breakpoint-up('sm') {
+  .chart-demo-modal__content {
+    grid-template-areas:
+      'chart chart'
+      'summary data';
+    grid-template-columns: minmax(0, 3fr) minmax(18rem, 2fr);
+    grid-template-rows: minmax(0, 35fr) minmax(0, 65fr);
+  }
+
+  .chart-demo-modal__panel {
+    width: min(56rem, 100%);
+  }
+
+  .chart-demo-modal__reference {
+    border-right: var(--border-width-1) var(--border-style-solid) var(--color-border);
+    border-bottom: 0;
+  }
+
+  .chart-demo-controls {
+    max-height: none;
+  }
+}
+
+@include breakpoint-up('md') {
+  .chart-demo-modal__content {
+    grid-template-areas:
+      'chart data'
+      'summary data';
+    grid-template-columns: minmax(0, 3fr) minmax(23rem, 2fr);
+    grid-template-rows: minmax(0, 3fr) minmax(0, 2fr);
+  }
+
+  .chart-demo-modal__panel {
+    width: min(78rem, 100%);
+  }
+
+  .chart-demo-modal__data-editor {
+    border-left: var(--border-width-1) var(--border-style-solid) var(--color-border);
+  }
+
+  .chart-demo-modal__reference {
+    border-right: 0;
+    border-bottom: var(--border-width-1) var(--border-style-solid) var(--color-border);
   }
 }

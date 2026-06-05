@@ -1,77 +1,27 @@
 import { useEffect, useState } from 'react'
 
 import {
-  AreaChart,
-  DEFAULT_AREA_CHART_VIEW_PROPS,
-} from '@/area-chart'
-import {
-  BarChart,
-  DEFAULT_BAR_CHART_VIEW_PROPS,
-} from '@/bar-chart'
-import {
-  BoxPlot,
-  DEFAULT_BOX_PLOT_VIEW_PROPS,
-} from '@/box-plot'
-import {
-  BulletChart,
-  DEFAULT_BULLET_CHART_VIEW_PROPS,
-} from '@/bullet-chart'
-import {
-  DEFAULT_HISTOGRAM_CHART_VIEW_PROPS,
-  HistogramChart,
-} from '@/histogram-chart'
-import {
-  DEFAULT_FUNNEL_CHART_VIEW_PROPS,
-  FunnelChart,
-} from '@/funnel-chart'
-import {
-  DEFAULT_GAUGE_CHART_VIEW_PROPS,
-  GaugeChart,
-} from '@/gauge-chart'
-import {
-  DEFAULT_KPI_CARD_VIEW_PROPS,
-  KPICard,
-} from '@/kpi-card'
-import {
-  DEFAULT_LINE_CHART_VIEW_PROPS,
-  LineChart,
-} from '@/line-chart'
-import {
-  DEFAULT_PIE_DONUT_CHART_VIEW_PROPS,
-  PieDonutChart,
-} from '@/pie-donut-chart'
-import {
-  DEFAULT_PROGRESS_BAR_VIEW_PROPS,
-  ProgressBar,
-} from '@/progress-bar'
-import {
-  DEFAULT_RANKED_LIST_VIEW_PROPS,
-  RankedList,
-} from '@/ranked-list'
-import {
-  DEFAULT_SCATTER_PLOT_VIEW_PROPS,
-  ScatterPlot,
-} from '@/scatter-plot'
-import {
-  DEFAULT_SPARKLINE_VIEW_PROPS,
-  Sparkline,
-} from '@/sparkline'
-import {
-  DEFAULT_VARIANCE_CHART_VIEW_PROPS,
-  VARIANCE_LOWER_IS_BETTER,
-  VarianceChart,
-} from '@/variance-chart'
-import {
   GitHubIcon,
   MoonIcon,
   SunIcon,
 } from '@/icons'
-import { some } from '@/shared'
+import {
+  matchOption,
+  none,
+  some,
+} from '@/shared'
+import type { Option } from '@/shared'
 import {
   always,
-  cond,
   ifElse,
 } from '@/shared/fp'
+
+import type { ChartDemo } from './ChartDemo.types'
+import { ChartDemoModal } from './ChartDemoModal'
+import {
+  chartDemos,
+  createInitialDemoState,
+} from './ChartDemoRegistry'
 
 type Theme = 'light' | 'dark'
 
@@ -100,245 +50,10 @@ const renderThemeIcon = ifElse(
   () => <MoonIcon />,
 )
 
-const revenueDeltaData = [
-  { category: 'North', value: 32 },
-  { category: 'South', value: -14 },
-  { category: 'East', value: 21 },
-  { category: 'West', value: -8 },
-  { category: 'Central', value: 18 },
-]
-
-const histogramData = [
-  45, 52, 61, 61, 63, 67, 70, 71, 72, 74, 75, 76, 78, 80, 82, 85, 88, 91, 94, 99,
-]
-
-const boxPlotData = [
-  12, 45, 52, 55, 61, 63, 67, 70, 71, 72, 74, 75, 76, 78, 80, 82, 85, 88, 91, 99,
-]
-
-const weeklyTemperatureData = [
-  { x: 1, y: 22 },
-  { x: 2, y: 24 },
-  { x: 3, y: 19 },
-  { x: 4, y: 21 },
-  { x: 5, y: 25 },
-  { x: 6, y: 28 },
-  { x: 7, y: 26 },
-]
-
-const weeklyActiveUsersData = [
-  { x: 1, y: 1200 },
-  { x: 2, y: 1500 },
-  { x: 3, y: 1350 },
-  { x: 4, y: 1800 },
-  { x: 5, y: 2100 },
-  { x: 6, y: 1950 },
-  { x: 7, y: 1600 },
-]
-
-const monthlyRevenueTrendData = [
-  { x: 1, y: 92_000 },
-  { x: 2, y: 95_500 },
-  { x: 3, y: 91_200 },
-  { x: 4, y: 104_800 },
-  { x: 5, y: 110_100 },
-  { x: 6, y: 108_700 },
-  { x: 7, y: 116_400 },
-  { x: 8, y: 121_300 },
-]
-
-const budgetBreakdownData = [
-  { category: 'Engineering', value: 450000 },
-  { category: 'Marketing', value: 200000 },
-  { category: 'Operations', value: 150000 },
-  { category: 'HR', value: 100000 },
-  { category: 'Legal', value: 50000 },
-]
-
-const salesFunnelData = [
-  { stage: 'Leads', value: 1200 },
-  { stage: 'Qualified', value: 780 },
-  { stage: 'Proposal', value: 360 },
-  { stage: 'Negotiation', value: 180 },
-  { stage: 'Closed Won', value: 72 },
-]
-
-const regionalSalesRankingsData = [
-  { label: 'North', value: 340000, priorRank: some(3) },
-  { label: 'East', value: 290000, priorRank: some(1) },
-  { label: 'South', value: 210000, priorRank: some(3) },
-  { label: 'West', value: 180000, priorRank: some(5) },
-  { label: 'Central', value: 165000, priorRank: some(4) },
-]
-
-const studyScoreData = [
-  { x: 2, y: 55 },
-  { x: 3, y: 60 },
-  { x: 5, y: 72 },
-  { x: 5, y: 68 },
-  { x: 8, y: 85 },
-  { x: 8, y: 91 },
-  { x: 10, y: 88 },
-  { x: 1, y: 40 },
-  { x: 6, y: 75 },
-]
-
-const departmentalCostVarianceData = [
-  { category: 'Marketing', actualValue: 112_000, budgetValue: 100_000 },
-  { category: 'Operations', actualValue: 92_000, budgetValue: 100_000 },
-  { category: 'HR', actualValue: 50_000, budgetValue: 50_000 },
-  { category: 'Support', actualValue: 73_000, budgetValue: 68_000 },
-  { category: 'Legal', actualValue: 41_000, budgetValue: 48_000 },
-]
-
-const formatSignedCurrency = (value: number) => {
-  const sign = cond([
-    [(candidate: number) => candidate > 0, () => '+'],
-    [(candidate: number) => candidate < 0, () => '-'],
-    [() => true, () => ''],
-  ])(value)
-
-  return `${sign}$${Math.abs(value).toLocaleString()}`
-}
-
-const barChartProps = {
-  ...DEFAULT_BAR_CHART_VIEW_PROPS,
-  data: revenueDeltaData,
-  ariaLabel: 'Regional revenue delta bar chart',
-  caption: some('Regional revenue delta with positive and negative values.'),
-  orderStrategy: { kind: 'value', direction: 'descending' },
-} satisfies Parameters<typeof BarChart>[0]
-
-const histogramChartProps = {
-  ...DEFAULT_HISTOGRAM_CHART_VIEW_PROPS,
-  data: histogramData,
-  ariaLabel: 'Exam score histogram',
-  caption: some('Exam scores grouped by manual thresholds.'),
-  binStrategy: { kind: 'manual', thresholds: [40, 50, 60, 70, 80, 90, 100] },
-} satisfies Parameters<typeof HistogramChart>[0]
-
-const boxPlotProps = {
-  ...DEFAULT_BOX_PLOT_VIEW_PROPS,
-  data: boxPlotData,
-  ariaLabel: 'Exam score box plot',
-  caption: some('Exam score distribution with one low outlier.'),
-} satisfies Parameters<typeof BoxPlot>[0]
-
-const lineChartProps = {
-  ...DEFAULT_LINE_CHART_VIEW_PROPS,
-  data: weeklyTemperatureData,
-  ariaLabel: 'Weekly temperature line chart',
-  caption: some('Daily temperature readings ordered by numeric weekday.'),
-} satisfies Parameters<typeof LineChart>[0]
-
-const areaChartProps = {
-  ...DEFAULT_AREA_CHART_VIEW_PROPS,
-  data: weeklyActiveUsersData,
-  ariaLabel: 'Weekly active users area chart',
-  caption: some('Daily active users with the filled region anchored to zero.'),
-} satisfies Parameters<typeof AreaChart>[0]
-
-const sparklineProps = {
-  ...DEFAULT_SPARKLINE_VIEW_PROPS,
-  data: monthlyRevenueTrendData,
-  ariaLabel: 'Monthly revenue trend sparkline',
-  caption: some('Eight-month revenue trend shown as a compact inline chart.'),
-} satisfies Parameters<typeof Sparkline>[0]
-
-const pieDonutChartProps = {
-  ...DEFAULT_PIE_DONUT_CHART_VIEW_PROPS,
-  data: budgetBreakdownData,
-  ariaLabel: 'Department budget donut chart',
-  caption: some('Annual budget share by department.'),
-  variant: some({ kind: 'donut', innerRadius: 0.54 }),
-  formatValue: (value: number) => `$${value.toLocaleString()}`,
-} satisfies Parameters<typeof PieDonutChart>[0]
-
-const funnelChartProps = {
-  ...DEFAULT_FUNNEL_CHART_VIEW_PROPS,
-  data: salesFunnelData,
-  ariaLabel: 'Sales pipeline funnel chart',
-  caption: some('Sales pipeline stage conversion from lead to closed won.'),
-  formatValue: (value: number) => value.toLocaleString(),
-} satisfies Parameters<typeof FunnelChart>[0]
-
-const scatterPlotProps = {
-  ...DEFAULT_SCATTER_PLOT_VIEW_PROPS,
-  data: studyScoreData,
-  ariaLabel: 'Study hours and exam score scatter plot',
-  caption: some('Student study hours plotted against exam score.'),
-} satisfies Parameters<typeof ScatterPlot>[0]
-
-const varianceChartProps = {
-  ...DEFAULT_VARIANCE_CHART_VIEW_PROPS,
-  data: departmentalCostVarianceData,
-  polarity: some(VARIANCE_LOWER_IS_BETTER),
-  ariaLabel: 'Departmental cost variance chart',
-  caption: some('Departmental actual spend compared with budget.'),
-  formatValue: (value: number) => `$${value.toLocaleString()}`,
-  formatVariance: formatSignedCurrency,
-} satisfies Parameters<typeof VarianceChart>[0]
-
-const progressBarProps = {
-  ...DEFAULT_PROGRESS_BAR_VIEW_PROPS,
-  currentValue: 73_000,
-  total: 100_000,
-  ariaLabel: 'Quarterly sales target progress',
-  caption: some('Quarterly sales target completion.'),
-  formatValue: (value: number) => `$${value.toLocaleString()}`,
-} satisfies Parameters<typeof ProgressBar>[0]
-
-const bulletChartProps = {
-  ...DEFAULT_BULLET_CHART_VIEW_PROPS,
-  currentValue: 87_000,
-  targetValue: 100_000,
-  bands: [
-    { label: 'At risk', lowerBound: 0, upperBound: 60_000 },
-    { label: 'Watch', lowerBound: 60_000, upperBound: 80_000 },
-    { label: 'Healthy', lowerBound: 80_000, upperBound: 120_000 },
-  ],
-  ariaLabel: 'Quarterly sales bullet chart',
-  caption: some('Quarterly sales compared with target and performance bands.'),
-  formatValue: (value: number) => `$${value.toLocaleString()}`,
-} satisfies Parameters<typeof BulletChart>[0]
-
-const gaugeChartProps = {
-  ...DEFAULT_GAUGE_CHART_VIEW_PROPS,
-  currentValue: 32,
-  minimum: 0,
-  maximum: 100,
-  zones: [
-    { label: 'At risk', lowerBound: 0, upperBound: 45 },
-    { label: 'Watch', lowerBound: 45, upperBound: 70 },
-    { label: 'Healthy', lowerBound: 70, upperBound: 100 },
-  ],
-  ariaLabel: 'Customer satisfaction gauge chart',
-  caption: some('Customer satisfaction score across performance zones.'),
-  formatValue: (value: number) => `${value.toLocaleString()}%`,
-} satisfies Parameters<typeof GaugeChart>[0]
-
-const rankedListProps = {
-  ...DEFAULT_RANKED_LIST_VIEW_PROPS,
-  data: regionalSalesRankingsData,
-  ariaLabel: 'Regional sales ranked list',
-  caption: some('Regional sales ordered by current period revenue.'),
-  formatValue: (value: number) => `$${value.toLocaleString()}`,
-} satisfies Parameters<typeof RankedList>[0]
-
-const kpiCardProps = {
-  ...DEFAULT_KPI_CARD_VIEW_PROPS,
-  metricName: 'Monthly Revenue',
-  currentValue: 124_500,
-  referenceValue: 110_800,
-  ariaLabel: 'Monthly revenue KPI card',
-  caption: some('Current month revenue compared with last month.'),
-  comparisonLabel: 'vs last month',
-  formatValue: (value: number) => `$${value.toLocaleString()}`,
-  formatChangeAmount: formatSignedCurrency,
-} satisfies Parameters<typeof KPICard>[0]
-
 export function ChartsDemoPage() {
   const [theme, setTheme] = useState<Theme>('light')
+  const [activeDemo, setActiveDemo] = useState<Option<ChartDemo>>(none)
+  const [demoState, setDemoState] = useState(createInitialDemoState)
   const isDarkTheme = theme === 'dark'
 
   useEffect(() => {
@@ -382,81 +97,34 @@ export function ChartsDemoPage() {
       </header>
 
       <section className="app-shell__grid">
-        <section className="app-shell__panel">
-          <h2>Bar Chart</h2>
-          <BarChart {...barChartProps} />
-        </section>
-
-        <section className="app-shell__panel">
-          <h2>Histogram</h2>
-          <HistogramChart {...histogramChartProps} />
-        </section>
-
-        <section className="app-shell__panel">
-          <h2>Box Plot</h2>
-          <BoxPlot {...boxPlotProps} />
-        </section>
-
-        <section className="app-shell__panel">
-          <h2>Line Chart</h2>
-          <LineChart {...lineChartProps} />
-        </section>
-
-        <section className="app-shell__panel">
-          <h2>Area Chart</h2>
-          <AreaChart {...areaChartProps} />
-        </section>
-
-        <section className="app-shell__panel">
-          <h2>Sparkline</h2>
-          <Sparkline {...sparklineProps} />
-        </section>
-
-        <section className="app-shell__panel">
-          <h2>Pie / Donut Chart</h2>
-          <PieDonutChart {...pieDonutChartProps} />
-        </section>
-
-        <section className="app-shell__panel">
-          <h2>Funnel Chart</h2>
-          <FunnelChart {...funnelChartProps} />
-        </section>
-
-        <section className="app-shell__panel">
-          <h2>Scatter Plot</h2>
-          <ScatterPlot {...scatterPlotProps} />
-        </section>
-
-        <section className="app-shell__panel">
-          <h2>Variance Chart</h2>
-          <VarianceChart {...varianceChartProps} />
-        </section>
-
-        <section className="app-shell__panel">
-          <h2>Progress Bar</h2>
-          <ProgressBar {...progressBarProps} />
-        </section>
-
-        <section className="app-shell__panel">
-          <h2>Bullet Chart</h2>
-          <BulletChart {...bulletChartProps} />
-        </section>
-
-        <section className="app-shell__panel">
-          <h2>Gauge Chart</h2>
-          <GaugeChart {...gaugeChartProps} />
-        </section>
-
-        <section className="app-shell__panel">
-          <h2>Ranked List</h2>
-          <RankedList {...rankedListProps} />
-        </section>
-
-        <section className="app-shell__panel">
-          <h2>KPI Card</h2>
-          <KPICard {...kpiCardProps} />
-        </section>
+        {chartDemos.map((demo) => (
+          <section className="app-shell__panel" key={demo.key}>
+            <header className="app-shell__panel-header">
+              <h2>{demo.title}</h2>
+              <button
+                className="app-shell__demo-button"
+                onClick={() => setActiveDemo(some(demo))}
+                type="button"
+              >
+                demo
+              </button>
+            </header>
+            {demo.renderCard()}
+          </section>
+        ))}
       </section>
+
+      {matchOption(activeDemo, {
+        some: (demo) => (
+          <ChartDemoModal
+            demo={demo}
+            onChange={setDemoState}
+            onClose={() => setActiveDemo(none)}
+            state={demoState}
+          />
+        ),
+        none: () => null,
+      })}
     </main>
   )
 }
