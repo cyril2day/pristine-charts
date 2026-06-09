@@ -130,8 +130,10 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Bump patch version and tag
+        id: bump
         run: |
-          npm version patch -m "chore: bump version to %s [skip ci]"
+          NEW_VERSION=$(npm version patch -m "chore: bump version to %s [skip ci]")
+          echo "version=${NEW_VERSION#v}" >> "$GITHUB_OUTPUT"
 
       - name: Push commit and tag
         run: |
@@ -139,6 +141,16 @@ jobs:
 
       - name: Build library
         run: pnpm build:lib
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.bump.outputs.version }}
+          generate_release_notes: true
+          files: |
+            dist/*.css
+            dist/*.js
+            dist/*.cjs
 
       - name: Publish to npm
         env:
