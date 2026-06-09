@@ -2,7 +2,9 @@
   "name": "pristine-charts",
   "version": "0.1.2",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -89,14 +91,32 @@
       "types": "./dist/variance-chart/index.d.ts",
       "import": "./dist/variance-chart/index.js",
       "require": "./dist/variance-chart/index.cjs"
-    }
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./area-chart.css": "./dist/area-chart/AreaChart.css",
+    "./bar-chart.css": "./dist/bar-chart/BarChart.css",
+    "./box-plot.css": "./dist/box-plot/BoxPlot.css",
+    "./bullet-chart.css": "./dist/bullet-chart/BulletChart.css",
+    "./chart-error.css": "./dist/chart-error/ChartError.css",
+    "./funnel-chart.css": "./dist/funnel-chart/FunnelChart.css",
+    "./gauge-chart.css": "./dist/gauge-chart/GaugeChart.css",
+    "./histogram-chart.css": "./dist/histogram-chart/HistogramChart.css",
+    "./kpi-card.css": "./dist/kpi-card/KPICard.css",
+    "./line-chart.css": "./dist/line-chart/LineChart.css",
+    "./pie-donut-chart.css": "./dist/pie-donut-chart/PieDonutChart.css",
+    "./progress-bar.css": "./dist/progress-bar/ProgressBar.css",
+    "./ranked-list.css": "./dist/ranked-list/RankedList.css",
+    "./scatter-plot.css": "./dist/scatter-plot/ScatterPlot.css",
+    "./sparkline.css": "./dist/sparkline/Sparkline.css",
+    "./variance-chart.css": "./dist/variance-chart/VarianceChart.css"
   },
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "vite",
-    "build:lib": "tsup",
+    "build:lib": "tsup && pnpm build:css",
+    "build:css": "sass --load-path=node_modules src/styles/tokens.scss dist/tokens.css --no-source-map && sass src/area-chart/AreaChart.scss dist/area-chart/AreaChart.css --no-source-map && sass src/bar-chart/BarChart.scss dist/bar-chart/BarChart.css --no-source-map && sass src/box-plot/BoxPlot.scss dist/box-plot/BoxPlot.css --no-source-map && sass src/bullet-chart/BulletChart.scss dist/bullet-chart/BulletChart.css --no-source-map && sass src/chart-error/ChartError.scss dist/chart-error/ChartError.css --no-source-map && sass src/funnel-chart/FunnelChart.scss dist/funnel-chart/FunnelChart.css --no-source-map && sass src/gauge-chart/GaugeChart.scss dist/gauge-chart/GaugeChart.css --no-source-map && sass src/histogram-chart/HistogramChart.scss dist/histogram-chart/HistogramChart.css --no-source-map && sass src/kpi-card/KPICard.scss dist/kpi-card/KPICard.css --no-source-map && sass src/line-chart/LineChart.scss dist/line-chart/LineChart.css --no-source-map && sass src/pie-donut-chart/PieDonutChart.scss dist/pie-donut-chart/PieDonutChart.css --no-source-map && sass src/progress-bar/ProgressBar.scss dist/progress-bar/ProgressBar.css --no-source-map && sass src/ranked-list/RankedList.scss dist/ranked-list/RankedList.css --no-source-map && sass src/scatter-plot/ScatterPlot.scss dist/scatter-plot/ScatterPlot.css --no-source-map && sass src/sparkline/Sparkline.scss dist/sparkline/Sparkline.css --no-source-map && sass src/variance-chart/VarianceChart.scss dist/variance-chart/VarianceChart.css --no-source-map",
     "build:site": "vite build --mode pages",
     "build": "pnpm build:lib && pnpm build:site",
     "prepublishOnly": "pnpm build:lib",

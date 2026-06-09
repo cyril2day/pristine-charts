@@ -1,0 +1,9 @@
+// Pristine Charts — Design Tokens
+// =============================================================================
+// CSS custom properties and reset required by all chart components.
+// Import this once in your app (skip if you already import pristine-styles).
+//
+// Usage:
+//   import 'pristine-charts/tokens.css'
+
+@use 'pristine-styles/scss' as *;
